@@ -180,3 +180,12 @@ B+Tree 原 cyclic 调度新增显式 `--fat-workers`：入口预留槽，worker 
 BeTree、ART、AERT 已支持原固定流水线 `concow <tree> --gc --fat-slots 2/4/8`，
 使用无互斥锁的 monitor 回收协议；第一版为入口追加，`--fat-workers` 仍仅支持 B+Tree。
 [协议、checkpoint 与验证](docs/NATIVE_MULTITREE_FAT.md)。
+
+### Paper-workload comparison on an x86 server
+
+Use [the two-version experiment guide](docs/PAPER_PAIR.md) to compare an archived,
+unmodified upstream CLI with the current fat-node CLI using Section 6 workload
+sizes, 32 clients and ten independent runs. Start with
+`python3 bench/paper_pair.py --smoke --timeout 120` on the server.
+The guide distinguishes the reproduced subset from full-paper reproduction and
+records the original BeTree timing limitation instead of silently patching it.
