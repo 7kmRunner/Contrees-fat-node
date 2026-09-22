@@ -219,7 +219,7 @@ def main():
                             (out/'logs'/(label+'.log')).write_text(r['stdout']+r['stderr'])
                             r.update(run=repeat,workload=workload,tree=tree,p=p,workers=w,variant=variant,
                                      preflight_ok=True,timing_warning=(tree=='betree' or gate[(workload,tree,p,w,'original')][1]))
-                            times=re.findall(r'process time \(s\):\s*([0-9.eE+-]+)',r['stderr'])
+                            times=re.findall(r'process time \(s\):\s*([0-9.eE+-]+)',r['stdout']+'\n'+r['stderr'])
                             peak=re.findall(r'Maximum resident set size \(kbytes\):\s*(\d+)',rss.read_text() if rss.exists() else '')
                             if r['status']=='ok':
                                 if len(times)!=1 or not peak or float(times[0])<=0:r['status']='invalid_output'
