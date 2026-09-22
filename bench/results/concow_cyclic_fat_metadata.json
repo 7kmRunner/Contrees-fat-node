@@ -1,0 +1,20 @@
+{
+  "date": "2026-09-10",
+  "architecture": "original concow_cyclic P=3",
+  "rows": 96,
+  "compiler": "Apple clang version 17.0.0 (clang-1700.6.4.2)",
+  "sha256": {
+    "lib/conctrl/concow_cyclic.hpp": "9ad047393a65c3d4c1c5d61fe4b92ac8e8d9148e2059fea89c9de3396cdf5de5",
+    "lib/conctrl/common.hpp": "f1ea9aeab989a69784dc53591dcf1a8ada5248654827879fc16791cd6e39097b",
+    "lib/conctrl/mpsc_list.hpp": "4a2b64c7008a09291db9647227a438bad52630ba9eb6e0823b42a2074c9d35d3",
+    "lib/trees/btree/node.hpp": "2203c6bcf3f854dcbd78842445b3e30e8d6c4170de7b9237351ffe3560bc606a",
+    "src/adapters/btree.hpp": "07ffeb737a3642778d40336aa62962a1eaf4d80310b6f447e298f629eb6a75d4",
+    "src/config.hpp": "b44a6df33f8d7a0cc469f770194cbae6799e090ee70abb7ec0bcd2ec60fcadc1",
+    "src/main.cpp": "805639f603ad2259754cc07bb62718f798f6c96ee75388fe1e48e46fb2a29db6",
+    "bench/concow_cyclic_fat_test.cpp": "9d01080795fff7560d69718e78707b3a7ba6827541f0c9403b59a5248d035511",
+    "bench/concow_fat_bench.cpp": "a06c9bdb59f3859798df4838d78960710f0ad6d679eced0a48d7300aa90cae43",
+    "bench/concow_cyclic_fat_matrix.py": "ea4f5d4db942888bb1e5704bf580dacdac85cbd70511a08287610257a5144567",
+    "bench/concow_cyclic_fat_bench": "3e3aeff6f10489e3fb5094f2a20ac82e2386ac6d32129aa9e311b8fb2f9c0111",
+    "bench/results/concow_cyclic_fat_arm64.csv": "51b0dfc7af1875e02c65066d4da172797a42181175d4ee8ea7997cc0d8d94a2c"
+  }
+}

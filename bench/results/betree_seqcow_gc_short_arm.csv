@@ -1,0 +1,21 @@
+sequence,mode,run,exit_code,elapsed_seconds,cpu_user_seconds,cpu_system_seconds,peak_rss_kib,num_records,num_transactions,estimated_input_kib,log_path,command
+1,gc_off,1,0,0.014623541,0.012988000,0.006322000,89952,,,,bench/results/betree_seqcow_gc_short_arm.logs/gc_off_run01.log,./bench/betree_gc_bench --scheduler seqcow --records 65536 --updates 50000
+2,gc_on,1,0,0.016052459,0.015502000,0.005947000,66944,,,,bench/results/betree_seqcow_gc_short_arm.logs/gc_on_run01.log,./bench/betree_gc_bench --scheduler seqcow --records 65536 --updates 50000 --gc
+3,gc_on,2,0,0.015756500,0.016098000,0.005695000,66944,,,,bench/results/betree_seqcow_gc_short_arm.logs/gc_on_run02.log,./bench/betree_gc_bench --scheduler seqcow --records 65536 --updates 50000 --gc
+4,gc_off,2,0,0.014025208,0.012362000,0.006053000,89952,,,,bench/results/betree_seqcow_gc_short_arm.logs/gc_off_run02.log,./bench/betree_gc_bench --scheduler seqcow --records 65536 --updates 50000
+5,gc_off,3,0,0.014938083,0.012321000,0.007166000,89952,,,,bench/results/betree_seqcow_gc_short_arm.logs/gc_off_run03.log,./bench/betree_gc_bench --scheduler seqcow --records 65536 --updates 50000
+6,gc_on,3,0,0.015542417,0.015422000,0.006034000,66944,,,,bench/results/betree_seqcow_gc_short_arm.logs/gc_on_run03.log,./bench/betree_gc_bench --scheduler seqcow --records 65536 --updates 50000 --gc
+7,gc_on,4,0,0.015841500,0.015792000,0.007013000,66944,,,,bench/results/betree_seqcow_gc_short_arm.logs/gc_on_run04.log,./bench/betree_gc_bench --scheduler seqcow --records 65536 --updates 50000 --gc
+8,gc_off,4,0,0.014911708,0.012986000,0.006645000,89952,,,,bench/results/betree_seqcow_gc_short_arm.logs/gc_off_run04.log,./bench/betree_gc_bench --scheduler seqcow --records 65536 --updates 50000
+9,gc_off,5,0,0.013589458,0.012014000,0.005975000,89952,,,,bench/results/betree_seqcow_gc_short_arm.logs/gc_off_run05.log,./bench/betree_gc_bench --scheduler seqcow --records 65536 --updates 50000
+10,gc_on,5,0,0.015283750,0.015604000,0.005386000,66944,,,,bench/results/betree_seqcow_gc_short_arm.logs/gc_on_run05.log,./bench/betree_gc_bench --scheduler seqcow --records 65536 --updates 50000 --gc
+11,gc_on,6,0,0.016478834,0.017624000,0.005506000,66944,,,,bench/results/betree_seqcow_gc_short_arm.logs/gc_on_run06.log,./bench/betree_gc_bench --scheduler seqcow --records 65536 --updates 50000 --gc
+12,gc_off,6,0,0.013820458,0.012016000,0.006021000,89952,,,,bench/results/betree_seqcow_gc_short_arm.logs/gc_off_run06.log,./bench/betree_gc_bench --scheduler seqcow --records 65536 --updates 50000
+13,gc_off,7,0,0.013584917,0.011914000,0.005990000,89952,,,,bench/results/betree_seqcow_gc_short_arm.logs/gc_off_run07.log,./bench/betree_gc_bench --scheduler seqcow --records 65536 --updates 50000
+14,gc_on,7,0,0.016101541,0.016920000,0.005400000,66944,,,,bench/results/betree_seqcow_gc_short_arm.logs/gc_on_run07.log,./bench/betree_gc_bench --scheduler seqcow --records 65536 --updates 50000 --gc
+15,gc_on,8,0,0.016293292,0.015775000,0.006136000,66944,,,,bench/results/betree_seqcow_gc_short_arm.logs/gc_on_run08.log,./bench/betree_gc_bench --scheduler seqcow --records 65536 --updates 50000 --gc
+16,gc_off,8,0,0.013705709,0.012179000,0.005915000,89952,,,,bench/results/betree_seqcow_gc_short_arm.logs/gc_off_run08.log,./bench/betree_gc_bench --scheduler seqcow --records 65536 --updates 50000
+17,gc_off,9,0,0.013451208,0.011823000,0.005887000,89952,,,,bench/results/betree_seqcow_gc_short_arm.logs/gc_off_run09.log,./bench/betree_gc_bench --scheduler seqcow --records 65536 --updates 50000
+18,gc_on,9,0,0.016684625,0.016442000,0.006301000,66944,,,,bench/results/betree_seqcow_gc_short_arm.logs/gc_on_run09.log,./bench/betree_gc_bench --scheduler seqcow --records 65536 --updates 50000 --gc
+19,gc_on,10,0,0.015192042,0.015466000,0.005427000,66944,,,,bench/results/betree_seqcow_gc_short_arm.logs/gc_on_run10.log,./bench/betree_gc_bench --scheduler seqcow --records 65536 --updates 50000 --gc
+20,gc_off,10,0,0.013960250,0.012207000,0.006261000,89952,,,,bench/results/betree_seqcow_gc_short_arm.logs/gc_off_run10.log,./bench/betree_gc_bench --scheduler seqcow --records 65536 --updates 50000

@@ -1,0 +1,23 @@
+{
+  "recorded_at": "2026-09-08T14:38:24.382133+08:00",
+  "compiler": "Apple clang version 17.0.0 (clang-1700.6.4.2)\nTarget: arm64-apple-darwin25.6.0\nThread model: posix\nInstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin\n",
+  "os": "ProductName:\t\tmacOS\nProductVersion:\t\t26.6.2\nBuildVersion:\t\t25G83\n",
+  "linked_libraries": "bench/concow_fat_bench:\n\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)\n\t/Users/minrain/.brew/opt/mimalloc/lib/libmimalloc.3.dylib (compatibility version 3.0.0, current version 3.5.0)\n\t/usr/lib/libc++.1.dylib (compatibility version 1.0.0, current version 2000.67.0)\n",
+  "flags": "-I. -I/Users/minrain/.brew/include -L/Users/minrain/.brew/lib -Wl,-rpath,/Users/minrain/.brew/lib -lpthread -lmimalloc -std=c++20 -O3 -DNDEBUG",
+  "command": "python3 bench/concow_fat_matrix.py --parallel-min-groups 2 16 --output bench/results/concow_fat_btree_dispatch_arm64.csv",
+  "measurement_rows": 432,
+  "source_sha256": {
+    "lib/conctrl/concow_fat.hpp": "572a4c77f3c4063f70d7554d0cb006e83791dcdd477dfd0732c775bffea4e7e4",
+    "lib/conctrl/reclamation.hpp": "fdee86f50ef2e1f5ca7c6cdfeeba6e0c669415e191791375603c49f265f7cc9c",
+    "src/adapters/btree.hpp": "73bd089cd13386ccbbb010c993c59aa028d45777390f84360466e19f70445181",
+    "lib/trees/btree/handlers.hpp": "6e9dc15d6b92222c3fc17e06a5a907fc431892d71cf7162896b4bbe9204ecef0",
+    "lib/trees/btree/node.hpp": "a8984cc7ad5d2f3f20a061d8da4e5fae241398c9f73f973558f850c305f04cc9",
+    "lib/trees/btree/update_cow.hpp": "8c73e9a7b39bdc533edd27153ce0ec54f19f041835c397b345f4429bcef147c1",
+    "bench/concow_fat_bench.cpp": "de38239189dc7a0a10156b539280376d86b55af3036724cda3d6c0994a5facef",
+    "bench/concow_fat_matrix.py": "7395c90ac561c240d9a808208de1e9a7e7dc22d8110e76b3aea8fa922f4d7862",
+    "bench/concow_fat_test.cpp": "cb3fe1312533d30583d9029f86ec20193bbac118729ab20c25dcc22869699290"
+  },
+  "binary_sha256": "6173a299fd2c8738f560f86f3b2e87a3415e9da2acb22264f20b693957561583",
+  "csv_sha256": "e87cc1084402a7cb74b01cfbcf8d165e062c65d136f0ee63a9c7cf44fb441a33",
+  "asan_tsan": "not validated; deferred by user"
+}

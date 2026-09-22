@@ -1,0 +1,13 @@
+{
+  "formal_rows": 180,
+  "configs": 60,
+  "runs_per_config": 3,
+  "warmups_per_config": 1,
+  "sha256": {
+    "bench/concow_betree_bench": "4ef73656e47ef4549798c92ca9d283960f380ca48445f8e01416e840b7f6cdd3",
+    "bench/concow_betree_test.cpp": "9a0b5d13da729e3a51d3d92ceaccfcd3dd6377a6835298526478b1399a8aa3c1",
+    "bench/concow_betree_matrix.py": "522ae20251db0a7cf1b60bfafdfe1d192daef422cf5ed1ce1c3760bd3bf64ef0",
+    "lib/conctrl/concow_fat.hpp": "7be3a1e0ada794806c5c57143baf11b94fedc71c81c45337f1b0495086af71cb",
+    "lib/trees/betree/fat_merge.hpp": "2d2ca5fc44eae6f0459d47b5b2f4aeb2e3588d07af480a9c2241300048be4b60"
+  }
+}

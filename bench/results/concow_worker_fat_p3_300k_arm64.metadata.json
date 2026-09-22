@@ -1,0 +1,6447 @@
+{
+  "arguments": {
+    "binary": "bench/concow_cyclic_fat_bench",
+    "output": "bench/results/concow_worker_fat_p3_300k_arm64.csv",
+    "records": 100000,
+    "updates": 300000,
+    "runs": 3,
+    "warmups": 1
+  },
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "cpu_count": 14,
+  "compiler": "Apple clang version 17.0.0 (clang-1700.6.4.2)\nTarget: arm64-apple-darwin25.6.0\nThread model: posix\nInstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin\n",
+  "git_head": "e487e91d31552685ea4d459223fc78375ed66591",
+  "binary_sha256": "72c6713cf219f998fd7ce35cec0fedad7c7ffdeede4df255af958b38518d251a",
+  "source_sha256": {
+    "bench/concow_fat_bench.cpp": "1643e507ff148849aa746d6ea6cc00e8f9718013530c4c36c1a86ba286e1af40",
+    "lib/common/arrayops.hpp": "62faf7b0d9ff97636789caade587c2c7e70af58be322e5e7deab8a716763c496",
+    "lib/common/fat_value.hpp": "57d96e5942cc73c1603a3a890180a0ee97e48797fd463cf1b2007a903d7ec151",
+    "lib/common/types.hpp": "d323ac2d646ede131e7d65ff61039255d36ecf040bd3cf183264f91418bd6174",
+    "lib/conctrl/common.hpp": "f1ea9aeab989a69784dc53591dcf1a8ada5248654827879fc16791cd6e39097b",
+    "lib/conctrl/concow.hpp": "d704eaf7614dd59e734e333d1cb4b8ef21305a59e16b5be04a58f2bb1a4ca324",
+    "lib/conctrl/concow_cyclic.hpp": "558d4d3ceb0842f661c96f60db29a5e71ff3ae005b1e3c0adc805cc54e3f9e4d",
+    "lib/conctrl/concow_fat.hpp": "7be3a1e0ada794806c5c57143baf11b94fedc71c81c45337f1b0495086af71cb",
+    "lib/conctrl/context.hpp": "bf4f725e7a3089734e59f864e4762cf56da941a4b4937a4463dd60e4b7894208",
+    "lib/conctrl/mpsc_list.hpp": "4a2b64c7008a09291db9647227a438bad52630ba9eb6e0823b42a2074c9d35d3",
+    "lib/conctrl/reclamation.hpp": "bd5d1cf3f1b761ace692dc15b076d2db5d13cbef4f7839df71a403d922a7291c",
+    "lib/conctrl/seqcow.hpp": "b4c2c3e853bd29b18c2e65a6cc505fef49a436b101fd3850a905d01619a54ebb",
+    "lib/trees/aert/build.hpp": "2eb261956a76e0005542621669dbf6b0cec285a748d7a05aaffc74d961f93495",
+    "lib/trees/aert/context.hpp": "a145d2304046fa4b2cab5090e48c8290b6c836d6e7166470ff555c86afa04ff4",
+    "lib/trees/aert/fat_lookup.hpp": "e9bc68670aedbe8795411e490baa6f079e76199c926d69bc904421f7280aabb6",
+    "lib/trees/aert/fat_merge.hpp": "b68ca4375cbb761f99aa0ad8fbcb5420927009f7307d5f08502a7ad468bd49f7",
+    "lib/trees/aert/handlers.hpp": "5ac5b441517ad676fd22c4ceb0f3f3ad5bbb069c46585c57e8e902d19823a726",
+    "lib/trees/aert/leaf.hpp": "3e61a01edbb4a3e569fc26be8cdfc00ef13afe4c525f20acdd1cdc397fcfba29",
+    "lib/trees/aert/node.hpp": "d93bf1451a67ba0fdcf8c03e7ccbecff923be546bc0c3b4151b3c08564c2d1fd",
+    "lib/trees/aert/node16.hpp": "7c1d75e2b70571526e388eea2699295e16542e8698dd60c9b6acead3b5931847",
+    "lib/trees/aert/node4.hpp": "e9de370bfe52931d0d5f0acee9fd6117e4b61af34028275f5db48236bc18235a",
+    "lib/trees/aert/node_wrapper.hpp": "fc8f46160e4e526a7b1d80fddf14eb1b24a62bafce621f74276bcf5142f06372",
+    "lib/trees/aert/nodeh16.hpp": "16993471f8f9aeaeac86c6867742e53fc9f39668701a87c29eddbce1038fe3ad",
+    "lib/trees/aert/nodeh4.hpp": "cdd77ac496b65f74c8eef566a979ef0b0eee21e771c8fe31b0ea78c572c1264b",
+    "lib/trees/aert/query.hpp": "1a3419e36fd26e0125a59ccda9070e6e1761f48d43e2c37c1322fca2c6cf3c67",
+    "lib/trees/aert/update_cow.hpp": "29e09515fb817a7ba99893b9cf42c10f4357ad123c99d457acc9ed52edcd2242",
+    "lib/trees/aert/update_inplace.hpp": "218c38569cd027c908f56bdd9cd15fad52f3a7d48dfdae1a9d04b0f0a07bd082",
+    "lib/trees/art/build.hpp": "e075b458955a6394f1d84c429c9b97b60b92bdee8e11e49d02cc8221a3073295",
+    "lib/trees/art/context.hpp": "2160201ef4c0dbd6e6bb755f341360bd9e160034f9c6a998a4dfe0decef813ad",
+    "lib/trees/art/fat_lookup.hpp": "dd5a037e060da3e2ec846f354e1868df2cf0241477377918f9cd9569e04eab19",
+    "lib/trees/art/fat_merge.hpp": "b4446cc36dbf2c149f649bbf2ceb38a235df854af0b8f2015053bc9a2e81f5c7",
+    "lib/trees/art/handlers.hpp": "ed1d6efa34ca90ffd1f65457fc5508565c8c22e1eda11b8af4fc388752575f72",
+    "lib/trees/art/leaf.hpp": "e4d56c095ec68601f9778b55380ddd7a0d04cebeae97a44a2369d368c70baea7",
+    "lib/trees/art/node.hpp": "0e9e8e2431c0612361986f54b54d12249a4da07ac6c409c2b6a2797c095c2944",
+    "lib/trees/art/node16.hpp": "49272ee3603d421283f321c3620cf0525ecd0270edf63a9a9ff9c4102e5bf8af",
+    "lib/trees/art/node256.hpp": "d393473fa564f0e45038f3a488447453a4ef63e761cbe6c7f648c364209bbf8f",
+    "lib/trees/art/node4.hpp": "ffcb1b682ae08aa5d918971052cdd5ccdf60cd40d03c4024bfe855818023ae6a",
+    "lib/trees/art/node48.hpp": "3a79f6dbc356b269e9d26686dad023f44ba17233d6bc9062fbcacc1717bd5bac",
+    "lib/trees/art/node_wrapper.hpp": "7ee1c3a029dc443f51bd07a30971a640ca0164adcd1561bdb356ce37e3ed3155",
+    "lib/trees/art/query.hpp": "c6264b072ae1c1094ca4377fad801f49f0f212dbf1b41afe767ffcd396d3c391",
+    "lib/trees/art/update_cow.hpp": "14dc1bfb5b448a9ad4ad47589dcddebc2a512d6510cb0d58e6d1626bd1ef965b",
+    "lib/trees/art/update_inplace.hpp": "462e7dea6c891428351f2c8da020a999eaccbf5c05d34df7ca4f86bdb20b0e4f",
+    "lib/trees/betree/build.hpp": "164a4ed44f192d14ab1453e5e25da0a2e10d88799785c0d1c54d26d23ddf38d3",
+    "lib/trees/betree/context.hpp": "c381b32d2dfd4065bde793d8542e64995d92d8ac070e7b695fc22e7ac1eb0357",
+    "lib/trees/betree/fat_merge.hpp": "2d2ca5fc44eae6f0459d47b5b2f4aeb2e3588d07af480a9c2241300048be4b60",
+    "lib/trees/betree/handlers.hpp": "a824c471ebcbf487e94f91c15ffb51b6677d08699fa45478d8199b0e21081f67",
+    "lib/trees/betree/node.hpp": "732f8a11bcf62184058d6b5c313d06e39ef1f726c75e099997a4c7e01009369f",
+    "lib/trees/betree/query.hpp": "e78802b10a59637c7c133889c864164b03b565261a56e9ba4ab6a0b1ba330e94",
+    "lib/trees/betree/rebuild.hpp": "566323a43ffe56dc83386a54950a641936b7765ae4ef4116d15c5af12455dea2",
+    "lib/trees/betree/update_cow.hpp": "b622a15fe22c27a36261b7552919c24bce91d5313f26e1f0c3d7840b66e15db8",
+    "lib/trees/betree/update_inplace.hpp": "aab9b159f1d56c400eed6c1a67303a74ada46409e519e1f56b23ce3fe49798d8",
+    "lib/trees/btree/build.hpp": "dd974632783720dffe46d77bde68b3013ce1a5791b8335a401b79f7eae467723",
+    "lib/trees/btree/context.hpp": "185f587c9a334e741c13f07f7a9f969d54c08380d309d435a651396e47352c3c",
+    "lib/trees/btree/fat_merge.hpp": "1ace6a528fab5d66b34a8166068237eac047891380436fb58077df160374cfff",
+    "lib/trees/btree/handlers.hpp": "bc9618d4513f2fdc0706bb92f591d605cbb81aa605eb09d94909e05be0c7e334",
+    "lib/trees/btree/node.hpp": "8a00869158851cf78897c61c83448696893994d3738ac6fb5cc7226178012199",
+    "lib/trees/btree/query.hpp": "c29e3294435109133f983efc9b259bab19dd5410f618372d7b751aa5cecba900",
+    "lib/trees/btree/update_cow.hpp": "6a7e74913a8ab3eaeefb1f7701fd1c2a3dc00b81bf6a48908c1af12abbbf8b8e",
+    "lib/trees/btree/update_inplace.hpp": "4804772ea64d51eef38bf7a5c27d4ed868bd473cc4d49cce2019356df050affc",
+    "src/adapters/aert.hpp": "034ef4ffc1e7b44382c89e4241f890a393ba16e8558a3bf727eb1e8d6bd252ed",
+    "src/adapters/art.hpp": "8df733e77b5d9f5709cee46ed748c98e8d6be247cba979352b46bb672791ac4f",
+    "src/adapters/betree.hpp": "86b80f67fe3df09df64628a75c73402353540440269a44cdeb498d9177306847",
+    "src/adapters/btree.hpp": "d1ef7a23e5fcac257ceb345178ff97cd98c009e6f028202534f6586c05e042df",
+    "src/config.hpp": "ad1e55118b2e65ac9da3b8f6649cea74d50be77bd37c7a98544b0c75c0136be4"
+  },
+  "seed": 20260917,
+  "sequential_processes": true,
+  "commands": [
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "2",
+        "--pattern",
+        "uniform",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "2",
+        "--pattern",
+        "uniform",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "4",
+        "--pattern",
+        "uniform",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "2",
+        "--pattern",
+        "hot",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "4",
+        "--pattern",
+        "uniform",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "8",
+        "--pattern",
+        "hot",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "8",
+        "--pattern",
+        "uniform",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "8",
+        "--pattern",
+        "uniform",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "8",
+        "--pattern",
+        "uniform",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "4",
+        "--pattern",
+        "hot"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "0",
+        "--pattern",
+        "hot",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "2",
+        "--pattern",
+        "uniform",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "0",
+        "--pattern",
+        "uniform",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "0",
+        "--pattern",
+        "uniform"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "4",
+        "--pattern",
+        "uniform"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "2",
+        "--pattern",
+        "uniform",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "4",
+        "--pattern",
+        "hot"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "4",
+        "--pattern",
+        "uniform",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "4",
+        "--pattern",
+        "uniform",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "8",
+        "--pattern",
+        "uniform",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "2",
+        "--pattern",
+        "hot",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "2",
+        "--pattern",
+        "uniform",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "4",
+        "--pattern",
+        "hot",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "8",
+        "--pattern",
+        "uniform",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "2",
+        "--pattern",
+        "hot",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "4",
+        "--pattern",
+        "hot"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "4",
+        "--pattern",
+        "hot",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "2",
+        "--pattern",
+        "uniform",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "8",
+        "--pattern",
+        "hot",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "4",
+        "--pattern",
+        "uniform"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "0",
+        "--pattern",
+        "uniform"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "2",
+        "--pattern",
+        "hot",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "8",
+        "--pattern",
+        "uniform",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "0",
+        "--pattern",
+        "uniform",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "8",
+        "--pattern",
+        "hot",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "8",
+        "--pattern",
+        "uniform",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "2",
+        "--pattern",
+        "hot"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "4",
+        "--pattern",
+        "uniform",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "4",
+        "--pattern",
+        "hot",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "2",
+        "--pattern",
+        "hot",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "2",
+        "--pattern",
+        "hot"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "2",
+        "--pattern",
+        "uniform"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "4",
+        "--pattern",
+        "hot",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "8",
+        "--pattern",
+        "uniform",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "0",
+        "--pattern",
+        "hot"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "8",
+        "--pattern",
+        "hot",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "2",
+        "--pattern",
+        "hot",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "2",
+        "--pattern",
+        "uniform"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "4",
+        "--pattern",
+        "uniform",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "4",
+        "--pattern",
+        "hot",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "4",
+        "--pattern",
+        "hot",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "8",
+        "--pattern",
+        "hot",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "0",
+        "--pattern",
+        "hot",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "4",
+        "--pattern",
+        "hot",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "4",
+        "--pattern",
+        "uniform"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "2",
+        "--pattern",
+        "uniform"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "8",
+        "--pattern",
+        "hot",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "4",
+        "--pattern",
+        "uniform",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "8",
+        "--pattern",
+        "hot",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "0",
+        "--pattern",
+        "uniform",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "0",
+        "--pattern",
+        "hot",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "2",
+        "--pattern",
+        "uniform",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "4",
+        "--pattern",
+        "hot",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "8",
+        "--pattern",
+        "hot"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "8",
+        "--pattern",
+        "uniform"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "8",
+        "--pattern",
+        "hot"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "2",
+        "--pattern",
+        "uniform",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "2",
+        "--pattern",
+        "hot",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "8",
+        "--pattern",
+        "uniform"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "8",
+        "--pattern",
+        "hot",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "8",
+        "--pattern",
+        "hot",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "4",
+        "--pattern",
+        "uniform",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "8",
+        "--pattern",
+        "uniform",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "0",
+        "--pattern",
+        "hot"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "0",
+        "--pattern",
+        "hot"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "8",
+        "--pattern",
+        "hot"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "4",
+        "--pattern",
+        "hot",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "0",
+        "--pattern",
+        "uniform"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "2",
+        "--pattern",
+        "uniform",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "2",
+        "--pattern",
+        "hot"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "8",
+        "--pattern",
+        "uniform"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "4",
+        "--pattern",
+        "uniform",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "2",
+        "--pattern",
+        "hot",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 0,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "2",
+        "--pattern",
+        "hot",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "8",
+        "--pattern",
+        "hot"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "4",
+        "--pattern",
+        "uniform",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "2",
+        "--pattern",
+        "hot",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "8",
+        "--pattern",
+        "uniform",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "8",
+        "--pattern",
+        "uniform"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "0",
+        "--pattern",
+        "hot"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "2",
+        "--pattern",
+        "uniform"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "2",
+        "--pattern",
+        "hot",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "2",
+        "--pattern",
+        "uniform",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "8",
+        "--pattern",
+        "hot",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "8",
+        "--pattern",
+        "hot"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "0",
+        "--pattern",
+        "hot"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "8",
+        "--pattern",
+        "uniform",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "2",
+        "--pattern",
+        "hot"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "8",
+        "--pattern",
+        "uniform",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "4",
+        "--pattern",
+        "uniform",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "8",
+        "--pattern",
+        "hot",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "8",
+        "--pattern",
+        "hot",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "4",
+        "--pattern",
+        "hot",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "8",
+        "--pattern",
+        "uniform"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "0",
+        "--pattern",
+        "uniform",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "2",
+        "--pattern",
+        "hot",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "8",
+        "--pattern",
+        "uniform",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "8",
+        "--pattern",
+        "hot",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "4",
+        "--pattern",
+        "uniform",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "2",
+        "--pattern",
+        "uniform",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "0",
+        "--pattern",
+        "hot",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "2",
+        "--pattern",
+        "uniform",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "2",
+        "--pattern",
+        "uniform",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "4",
+        "--pattern",
+        "hot",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "4",
+        "--pattern",
+        "hot",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "2",
+        "--pattern",
+        "uniform"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "4",
+        "--pattern",
+        "uniform"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "4",
+        "--pattern",
+        "hot",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "2",
+        "--pattern",
+        "uniform",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "2",
+        "--pattern",
+        "uniform",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "0",
+        "--pattern",
+        "uniform"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "8",
+        "--pattern",
+        "uniform",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "8",
+        "--pattern",
+        "hot",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "8",
+        "--pattern",
+        "hot",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "4",
+        "--pattern",
+        "uniform",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "4",
+        "--pattern",
+        "uniform",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "8",
+        "--pattern",
+        "uniform",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "4",
+        "--pattern",
+        "uniform",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "2",
+        "--pattern",
+        "uniform",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "4",
+        "--pattern",
+        "hot",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "4",
+        "--pattern",
+        "hot"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "4",
+        "--pattern",
+        "uniform"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "8",
+        "--pattern",
+        "hot",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "2",
+        "--pattern",
+        "uniform",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "2",
+        "--pattern",
+        "hot",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "8",
+        "--pattern",
+        "uniform"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "4",
+        "--pattern",
+        "uniform",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "2",
+        "--pattern",
+        "hot",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "2",
+        "--pattern",
+        "hot"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "0",
+        "--pattern",
+        "hot",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "2",
+        "--pattern",
+        "hot",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "2",
+        "--pattern",
+        "hot"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "8",
+        "--pattern",
+        "hot",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "2",
+        "--pattern",
+        "hot",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "8",
+        "--pattern",
+        "hot"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "0",
+        "--pattern",
+        "uniform"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "2",
+        "--pattern",
+        "uniform"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "8",
+        "--pattern",
+        "uniform",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "4",
+        "--pattern",
+        "hot",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "8",
+        "--pattern",
+        "uniform",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "2",
+        "--pattern",
+        "uniform",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "8",
+        "--pattern",
+        "hot",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "4",
+        "--pattern",
+        "hot",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "4",
+        "--pattern",
+        "hot",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "4",
+        "--pattern",
+        "uniform"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "4",
+        "--pattern",
+        "hot"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "0",
+        "--pattern",
+        "uniform",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "0",
+        "--pattern",
+        "hot",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "4",
+        "--pattern",
+        "hot",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "0",
+        "--pattern",
+        "uniform"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "2",
+        "--pattern",
+        "hot",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "0",
+        "--pattern",
+        "uniform",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "8",
+        "--pattern",
+        "uniform",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "2",
+        "--pattern",
+        "hot",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "0",
+        "--pattern",
+        "hot"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "4",
+        "--pattern",
+        "uniform",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "4",
+        "--pattern",
+        "uniform",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 1,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "4",
+        "--pattern",
+        "hot"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "2",
+        "--pattern",
+        "uniform"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "8",
+        "--pattern",
+        "hot"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "4",
+        "--pattern",
+        "uniform",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "4",
+        "--pattern",
+        "uniform"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "0",
+        "--pattern",
+        "uniform"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "2",
+        "--pattern",
+        "hot",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "2",
+        "--pattern",
+        "hot",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "8",
+        "--pattern",
+        "uniform",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "0",
+        "--pattern",
+        "hot",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "8",
+        "--pattern",
+        "hot",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "2",
+        "--pattern",
+        "uniform",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "2",
+        "--pattern",
+        "uniform",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "8",
+        "--pattern",
+        "hot"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "4",
+        "--pattern",
+        "hot",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "8",
+        "--pattern",
+        "uniform",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "4",
+        "--pattern",
+        "uniform",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "4",
+        "--pattern",
+        "uniform",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "2",
+        "--pattern",
+        "uniform",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "8",
+        "--pattern",
+        "hot",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "0",
+        "--pattern",
+        "hot"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "2",
+        "--pattern",
+        "hot",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "8",
+        "--pattern",
+        "hot",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "4",
+        "--pattern",
+        "uniform",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "8",
+        "--pattern",
+        "hot",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "8",
+        "--pattern",
+        "hot"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "8",
+        "--pattern",
+        "hot",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "8",
+        "--pattern",
+        "uniform",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "0",
+        "--pattern",
+        "uniform",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "2",
+        "--pattern",
+        "hot",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "2",
+        "--pattern",
+        "hot",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "4",
+        "--pattern",
+        "uniform",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "2",
+        "--pattern",
+        "hot"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "0",
+        "--pattern",
+        "hot"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "4",
+        "--pattern",
+        "hot"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "8",
+        "--pattern",
+        "hot",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "2",
+        "--pattern",
+        "uniform"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "0",
+        "--pattern",
+        "hot",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "4",
+        "--pattern",
+        "uniform",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "2",
+        "--pattern",
+        "uniform",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "8",
+        "--pattern",
+        "uniform",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "4",
+        "--pattern",
+        "hot",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "8",
+        "--pattern",
+        "uniform"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "8",
+        "--pattern",
+        "uniform"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "2",
+        "--pattern",
+        "hot",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "4",
+        "--pattern",
+        "hot",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "4",
+        "--pattern",
+        "uniform"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "4",
+        "--pattern",
+        "uniform",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "2",
+        "--pattern",
+        "hot"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "4",
+        "--pattern",
+        "uniform"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "4",
+        "--pattern",
+        "hot"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "4",
+        "--pattern",
+        "hot",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "4",
+        "--pattern",
+        "hot",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "8",
+        "--pattern",
+        "hot",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "8",
+        "--pattern",
+        "uniform"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "4",
+        "--pattern",
+        "hot",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "2",
+        "--pattern",
+        "hot",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "0",
+        "--pattern",
+        "hot"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "2",
+        "--pattern",
+        "uniform",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "0",
+        "--pattern",
+        "uniform",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "0",
+        "--pattern",
+        "uniform"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "4",
+        "--pattern",
+        "uniform",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "2",
+        "--pattern",
+        "uniform",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "8",
+        "--pattern",
+        "hot",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "2",
+        "--pattern",
+        "hot",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "4",
+        "--pattern",
+        "hot",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "0",
+        "--pattern",
+        "uniform",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "2",
+        "--pattern",
+        "uniform",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "2",
+        "--pattern",
+        "uniform",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "2",
+        "--pattern",
+        "uniform",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "4",
+        "--pattern",
+        "uniform",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "8",
+        "--pattern",
+        "uniform",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "8",
+        "--pattern",
+        "uniform",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "8",
+        "--pattern",
+        "uniform",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "2",
+        "--pattern",
+        "uniform"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "8",
+        "--pattern",
+        "uniform",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "2",
+        "--pattern",
+        "hot",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "4",
+        "--pattern",
+        "hot",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "0",
+        "--pattern",
+        "hot",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "4",
+        "--pattern",
+        "hot",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "4",
+        "--pattern",
+        "hot"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "0",
+        "--pattern",
+        "uniform"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "8",
+        "--pattern",
+        "uniform",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "2",
+        "--pattern",
+        "hot"
+      ]
+    },
+    {
+      "run": 2,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "8",
+        "--pattern",
+        "hot",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "2",
+        "--pattern",
+        "uniform",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "2",
+        "--pattern",
+        "uniform",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "0",
+        "--pattern",
+        "hot",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "2",
+        "--pattern",
+        "hot",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "2",
+        "--pattern",
+        "hot",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "4",
+        "--pattern",
+        "uniform",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "8",
+        "--pattern",
+        "hot",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "2",
+        "--pattern",
+        "uniform",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "8",
+        "--pattern",
+        "hot"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "2",
+        "--pattern",
+        "uniform",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "2",
+        "--pattern",
+        "hot",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "8",
+        "--pattern",
+        "uniform",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "2",
+        "--pattern",
+        "hot",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "2",
+        "--pattern",
+        "hot",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "4",
+        "--pattern",
+        "hot",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "0",
+        "--pattern",
+        "uniform"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "0",
+        "--pattern",
+        "hot"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "2",
+        "--pattern",
+        "hot"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "8",
+        "--pattern",
+        "hot",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "8",
+        "--pattern",
+        "uniform",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "2",
+        "--pattern",
+        "hot",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "0",
+        "--pattern",
+        "uniform",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "2",
+        "--pattern",
+        "uniform",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "8",
+        "--pattern",
+        "hot",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "8",
+        "--pattern",
+        "hot",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "2",
+        "--pattern",
+        "hot"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "8",
+        "--pattern",
+        "uniform",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "2",
+        "--pattern",
+        "hot",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "4",
+        "--pattern",
+        "uniform",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "8",
+        "--pattern",
+        "uniform",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "2",
+        "--pattern",
+        "uniform"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "4",
+        "--pattern",
+        "uniform"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "2",
+        "--pattern",
+        "uniform",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "8",
+        "--pattern",
+        "hot",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "8",
+        "--pattern",
+        "uniform",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "4",
+        "--pattern",
+        "uniform",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "4",
+        "--pattern",
+        "uniform",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "4",
+        "--pattern",
+        "uniform",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "8",
+        "--pattern",
+        "hot",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "8",
+        "--pattern",
+        "hot",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "8",
+        "--pattern",
+        "uniform"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "0",
+        "--pattern",
+        "uniform"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "4",
+        "--pattern",
+        "hot"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "2",
+        "--pattern",
+        "hot",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "0",
+        "--pattern",
+        "hot",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "0",
+        "--pattern",
+        "uniform"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "2",
+        "--pattern",
+        "uniform"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "8",
+        "--pattern",
+        "hot",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "8",
+        "--pattern",
+        "uniform"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "4",
+        "--pattern",
+        "hot",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "8",
+        "--pattern",
+        "uniform"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "4",
+        "--pattern",
+        "hot"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "0",
+        "--pattern",
+        "hot"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "0",
+        "--pattern",
+        "uniform",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "2",
+        "--pattern",
+        "uniform",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "4",
+        "--pattern",
+        "hot",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "8",
+        "--pattern",
+        "hot"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "0",
+        "--pattern",
+        "hot"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "4",
+        "--pattern",
+        "hot",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "2",
+        "--pattern",
+        "hot"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "2",
+        "--pattern",
+        "uniform",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "2",
+        "--pattern",
+        "uniform",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "4",
+        "--pattern",
+        "hot",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "4",
+        "--pattern",
+        "uniform",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "8",
+        "--pattern",
+        "uniform",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "4",
+        "--pattern",
+        "hot",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "8",
+        "--pattern",
+        "uniform",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "4",
+        "--pattern",
+        "hot",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "8",
+        "--pattern",
+        "hot"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "8",
+        "--pattern",
+        "uniform",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "2",
+        "--pattern",
+        "uniform"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "4",
+        "--pattern",
+        "uniform"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "4",
+        "--pattern",
+        "uniform"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "0",
+        "--pattern",
+        "hot",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "4",
+        "--pattern",
+        "uniform",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "4",
+        "--pattern",
+        "hot",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "8",
+        "--pattern",
+        "hot",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "8",
+        "--pattern",
+        "uniform",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "4",
+        "--pattern",
+        "uniform",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "1",
+        "--slots",
+        "4",
+        "--pattern",
+        "uniform",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "4",
+        "--pattern",
+        "hot"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "0",
+        "--pattern",
+        "uniform",
+        "--pinned"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "4",
+        "--slots",
+        "2",
+        "--pattern",
+        "hot",
+        "--pinned",
+        "--fat-workers"
+      ]
+    },
+    {
+      "run": 3,
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/bench/concow_cyclic_fat_bench",
+        "--records",
+        "100000",
+        "--updates",
+        "300000",
+        "--clients",
+        "4",
+        "--workers",
+        "2",
+        "--slots",
+        "4",
+        "--pattern",
+        "hot",
+        "--pinned"
+      ]
+    }
+  ],
+  "completed": true,
+  "elapsed_seconds": 89.131209583
+}

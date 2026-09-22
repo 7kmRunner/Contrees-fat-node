@@ -1,0 +1,3 @@
+scheduler=seqcow gc=on records=65536 updates=50000 elapsed_seconds=0.007379 value_check=pass
+retired_nodes=300000 reclaimed_nodes=300000 pending_nodes=0 retired_bytes=76800000 reclaimed_bytes=76800000 pending_bytes=0
+current_rss_bytes=68534272 peak_rss_bytes=68534272

@@ -1,0 +1,1777 @@
+{
+  "commit": "e487e91d31552685ea4d459223fc78375ed66591",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "compiler": "Apple clang version 17.0.0 (clang-1700.6.4.2)\nTarget: arm64-apple-darwin25.6.0\nThread model: posix\nInstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin\n",
+  "logical_cpu_count": 14,
+  "original_sources_unchanged": true,
+  "source_sha256": {
+    ".gitignore": "71ec5376d4dc5254906408542cd5edb1badc1dcfde3708efaacf84432f1a09ee",
+    "Makefile": "1e17a7d33d78a9d5adeb5cd60044323f4761da4e15e464a1f45505908fa01146",
+    "README.md": "745ebe2a103cfc6990b1955c464a941d2882611d7c7b152a1a655bba01b8f672",
+    "lib/common/arrayops.hpp": "62faf7b0d9ff97636789caade587c2c7e70af58be322e5e7deab8a716763c496",
+    "lib/common/types.hpp": "d323ac2d646ede131e7d65ff61039255d36ecf040bd3cf183264f91418bd6174",
+    "lib/conctrl/common.hpp": "b7ac7264a5a4b0c32c1c199982593d453370c9e69428bf23ff019403dc53a801",
+    "lib/conctrl/concow.hpp": "401148f83d3ccc25a803060c6c267eb00ae5fa3968cba99be3bdc280325bbae0",
+    "lib/conctrl/concow_cyclic.hpp": "87e4efab171b71ddd3990377f6e633ae63ade64c030975ecab3e590b48ece64b",
+    "lib/conctrl/context.hpp": "519a1d847448b90f07d3c6a7f52d16b0b8cf64cfbf0aac8c16e58161bf5d796d",
+    "lib/conctrl/mpsc_list.hpp": "e8f0dd9c518efceb8d01600f9a7059d4109e14ab7fbd816c91e6e98c63c9f383",
+    "lib/conctrl/seqcow.hpp": "47404b66f693279438f90847f819cca1aae53414f11f33af1bdbf8ba59bc8f0d",
+    "lib/trees/aert/build.hpp": "2eb261956a76e0005542621669dbf6b0cec285a748d7a05aaffc74d961f93495",
+    "lib/trees/aert/context.hpp": "a145d2304046fa4b2cab5090e48c8290b6c836d6e7166470ff555c86afa04ff4",
+    "lib/trees/aert/handlers.hpp": "ec1da046a3246a6602a7ef90cf1d28ec210bc4790ab9f812b921c654710c84a1",
+    "lib/trees/aert/leaf.hpp": "3e61a01edbb4a3e569fc26be8cdfc00ef13afe4c525f20acdd1cdc397fcfba29",
+    "lib/trees/aert/node.hpp": "add71d6ef794ae21091e4ecd36db4861a7d0e8a750193310e80a74fb2c137ef3",
+    "lib/trees/aert/node16.hpp": "349bebe1d1c4d88474956dfeb9dfc25d5bdadda7db3d99470fbef0dff24d8c45",
+    "lib/trees/aert/node4.hpp": "e9de370bfe52931d0d5f0acee9fd6117e4b61af34028275f5db48236bc18235a",
+    "lib/trees/aert/node_wrapper.hpp": "fc8f46160e4e526a7b1d80fddf14eb1b24a62bafce621f74276bcf5142f06372",
+    "lib/trees/aert/nodeh16.hpp": "16993471f8f9aeaeac86c6867742e53fc9f39668701a87c29eddbce1038fe3ad",
+    "lib/trees/aert/nodeh4.hpp": "cdd77ac496b65f74c8eef566a979ef0b0eee21e771c8fe31b0ea78c572c1264b",
+    "lib/trees/aert/query.hpp": "0f3ad4032912662cd5ed0ace314fcf2244789e75edb5c6ec7ca477f5a4aab542",
+    "lib/trees/aert/update_cow.hpp": "f97b97d0b9757afb67cae826e172494f28e7a31549e668d67ac63ad457db0bf4",
+    "lib/trees/aert/update_inplace.hpp": "218c38569cd027c908f56bdd9cd15fad52f3a7d48dfdae1a9d04b0f0a07bd082",
+    "lib/trees/art/build.hpp": "e075b458955a6394f1d84c429c9b97b60b92bdee8e11e49d02cc8221a3073295",
+    "lib/trees/art/context.hpp": "2160201ef4c0dbd6e6bb755f341360bd9e160034f9c6a998a4dfe0decef813ad",
+    "lib/trees/art/handlers.hpp": "ba349aec4c8be7545292fb4bf8bae20fa5fed7f756c963aa2bfef14f30289b66",
+    "lib/trees/art/leaf.hpp": "164795267490d2c0d6b7e61a4ee63d676c0159544db0a33784df49fcd8cba838",
+    "lib/trees/art/node.hpp": "5738e7cf58c7af12c84cf24d115b170366820791e9908f02780fd646ecbe9756",
+    "lib/trees/art/node16.hpp": "99bce05a453baccfcf13c093bfc5dbd8edbb1dc6b07c1d6120f93a0fa195c961",
+    "lib/trees/art/node256.hpp": "d393473fa564f0e45038f3a488447453a4ef63e761cbe6c7f648c364209bbf8f",
+    "lib/trees/art/node4.hpp": "ffcb1b682ae08aa5d918971052cdd5ccdf60cd40d03c4024bfe855818023ae6a",
+    "lib/trees/art/node48.hpp": "3a79f6dbc356b269e9d26686dad023f44ba17233d6bc9062fbcacc1717bd5bac",
+    "lib/trees/art/node_wrapper.hpp": "7ee1c3a029dc443f51bd07a30971a640ca0164adcd1561bdb356ce37e3ed3155",
+    "lib/trees/art/query.hpp": "733196297b84a55c4a95b0dfae6f8172fba502892b9ff6170fb278b8c94d5061",
+    "lib/trees/art/update_cow.hpp": "4f50b8c27965e06ed40b55a25a98186de491d03eee23705d2d53dbcbd7817124",
+    "lib/trees/art/update_inplace.hpp": "462e7dea6c891428351f2c8da020a999eaccbf5c05d34df7ca4f86bdb20b0e4f",
+    "lib/trees/betree/build.hpp": "164a4ed44f192d14ab1453e5e25da0a2e10d88799785c0d1c54d26d23ddf38d3",
+    "lib/trees/betree/context.hpp": "c381b32d2dfd4065bde793d8542e64995d92d8ac070e7b695fc22e7ac1eb0357",
+    "lib/trees/betree/handlers.hpp": "d8024dfbb5f3327b35f90fe23dd928a17da1640fafc9abe5c906b26aa5694ecd",
+    "lib/trees/betree/node.hpp": "c3c810a16b954ed4eb5e495f0495fc442d4e9d7a9d635ae7442f8e233d0bb020",
+    "lib/trees/betree/query.hpp": "d06d957b723c51ee34dec15824998d5b8b239afc0dc1b630e7fcd2f2acbd02a2",
+    "lib/trees/betree/rebuild.hpp": "35af35f8b2ea99bc681ce42ef83e77a697582b86eb6941b94f52e140f9dd0a1b",
+    "lib/trees/betree/update_cow.hpp": "655a3cf8f7608021761e5f606c1734b52e57f0650953649f700dc0245ef1965f",
+    "lib/trees/betree/update_inplace.hpp": "aab9b159f1d56c400eed6c1a67303a74ada46409e519e1f56b23ce3fe49798d8",
+    "lib/trees/btree/build.hpp": "dd974632783720dffe46d77bde68b3013ce1a5791b8335a401b79f7eae467723",
+    "lib/trees/btree/context.hpp": "07210b1f658f18538253c2a19290059852258d9be95d9580e930db6018ff0cef",
+    "lib/trees/btree/handlers.hpp": "78547c216a27e3a4165fa07981648995f7e3a6824b9701ea96d36ec2f3533b9d",
+    "lib/trees/btree/node.hpp": "35c9df65430683c66ed320fb5f8844cb0ce9f053073d97e5a09f53fd03a62823",
+    "lib/trees/btree/query.hpp": "9711701f58acf105af4fd2f37cd2762d1181b98edfd7b995eac8a58c14cdd172",
+    "lib/trees/btree/update_cow.hpp": "19fe53f4ebda025ec287b59405797f8a2f86e0c9fc2f93c521d7a9eeec08510f",
+    "lib/trees/btree/update_inplace.hpp": "4804772ea64d51eef38bf7a5c27d4ed868bd473cc4d49cce2019356df050affc",
+    "src/adapters/aert.hpp": "1c001e1613eac73b1f378fad5b1c96726302b89acd37b4f49eb5f8edd2485d39",
+    "src/adapters/art.hpp": "c7e5ea45d9642afd5f6fb6859d215fa55cea33ba31b1ec812c25383b682be0ed",
+    "src/adapters/betree.hpp": "80a91b9b86274158dd59d424b003956a60213d3f49df66af21bc0ba09f0a7c5d",
+    "src/adapters/btree.hpp": "3f93094db00395afb6f81eb9c7c6988ef5272d548801d908eb8eca242478fbd9",
+    "src/config.hpp": "0cf6c9fbc2f5425a8dd112b10fe41b8e1ce98d873f0c438f088d8f3e9071fd53",
+    "src/main.cpp": "1b8596cda9a25ea289805b3537622a2922c4f46232ab5a82851c5b8b510f618b",
+    "utils/log.h": "df214083b6c3914fc75479abf09875b54381668393ed8c67513a6a09f63f1c8f",
+    "utils/timer.hpp": "515d914a9aec2d6253aa44303075db79a02fb0b24551347e1526d222c2f2cf5f",
+    "ycsbc/.gitignore": "6ed8c4ef007d70177afdd48a2db7d314c98565501c16056fcf68c640df62dda6",
+    "ycsbc/LICENSE": "bb28c48e3e078166e91cfc2b6db7ffebb8a0973b9e23b3df060561292d8d69ec",
+    "ycsbc/Makefile": "cc37fb60631fd5197d75482d1f252aeb83d56253522b24457e50958ca24d82fe",
+    "ycsbc/README.md": "68afc0eb0e103af70a622f6c2385b9589d478472ac98fb49a2d3dfecd97ca82f",
+    "ycsbc/core/client.h": "fec507f2816b1c37eb0a55da9b538bfab8dcf163c615c25d292789dfaa529ab4",
+    "ycsbc/core/const_generator.h": "b6579e0d1b3c09bdafb2e1b26887ba6cfcf9feff9e015486223db7c49c7b0812",
+    "ycsbc/core/core_workload.h": "b2a901b82457a4162d473548230d22df6c7bb72767721c340509456b00cf683f",
+    "ycsbc/core/counter_generator.h": "7d38926216ef864419333e3e58a75b441a7fd4553259392a1f18784317e308d2",
+    "ycsbc/core/db.h": "c2209eb8057a085e529e340628a75c7e8b85a15bdf0dee90f7064e03bb6a7274",
+    "ycsbc/core/discrete_generator.h": "7fc10cdbbb8889ab2517b9058708d598a17f85081b2780a2d9f91565a4d94056",
+    "ycsbc/core/generator.h": "f4d74ecc7056cde13bd8302a1812bf3806ef1030f883d55263f1f101ceaaa2c4",
+    "ycsbc/core/properties.h": "e7ca8bfcccf47becb658e12fc705598bdeeb01bd2a445f4c03b3a10508834b6d",
+    "ycsbc/core/scrambled_zipfian_generator.h": "ffe0790a6c555c83bca28fc6211d198a64abce96c510c81aa4fad7adf27f6171",
+    "ycsbc/core/skewed_latest_generator.h": "0716654b3665002210157b14cabb711542882f6a86486e675f71a728d4b2dbb4",
+    "ycsbc/core/timer.h": "e2e8ab7d4ee50d59e552645ff666eb0a78c8ae3470a99cbd1ff70a5c69c5d048",
+    "ycsbc/core/uniform_generator.h": "1cd3668dc4dc8e918672ca9d94bb23cfbb565a677e485ba9048c3c37cc26d529",
+    "ycsbc/core/utils.h": "3e6a41bb4c5b1e6af170257e4c63f8abacd5a13765b7fe40aaf5483465da1218",
+    "ycsbc/core/zipfian_generator.h": "92ed28792d6e11ae9cc16265d5bc10bb8913f12720dac7b906368722d5f4dbf9",
+    "ycsbc/db/db_factory.hpp": "1ba0d0aafb5cb6706d4fdcc1ec3ef00dcdf4644ec425abf3f1336dc4bf52e07b",
+    "ycsbc/db/export.hpp": "643cd78e8a406ccc43080fda11b16d68fd0a9a0fca85941cb728dc4b0badda51",
+    "ycsbc/workloads/workload_lookup10.spec": "4ca39fc33d60b979730b2b471aaa6cbaa8ce6727ad32d291a386a1330598d401",
+    "ycsbc/workloads/workload_lookup30.spec": "b3a76eea233c75419c5c3741aed4a7247b20eb8451572d4817bb0b918438c292",
+    "ycsbc/workloads/workload_lookup50.spec": "4cbae31abc364251354947eb9972f93418d9fea74783998d17890b020a2a7306",
+    "ycsbc/workloads/workload_lookup70.spec": "2ef366d3ddae27af0476fa0b1ccd68d301c0d9e480d81b9c9836ceb05d3708e4",
+    "ycsbc/workloads/workload_lookup90.spec": "dc04af682882d88a4e847c4bb3a606dada642bda670c4fe7b2e8b14656d0824e",
+    "ycsbc/workloads/workload_scan10.spec": "ddb0616bd999670990dad6aa5b833b07cfa4f9be08692fe2d2aab93eed63ca45",
+    "ycsbc/workloads/workload_scan20.spec": "d063844cd53d1417b17e244eb437fc2d21e0dcff9f232f625afbc401543a1c2f",
+    "ycsbc/workloads/workload_scan30.spec": "60caddcaf463a04e8b33b6c469b2dbc1b8ba8f8c17b869398377b340c9e4f626",
+    "ycsbc/workloads/workload_scan40.spec": "e6ecea0fc959b740db0bc6011ed1883ac831dcd97f8a26d1224bdcb36c4565e2",
+    "ycsbc/workloads/workload_scan50.spec": "feb7dd2be68b65d49603f220e50a5046d23ef6ea637a88cc2d2487bd15cb3942",
+    "ycsbc/workloads/workload_update.spec": "90717343cbb066249c211806c52f4321351fd4c28882518e887b8b119e545e9b",
+    "ycsbc/workloads/workload_update_zipfian.spec": "1344ecdfce88879e1f5946ac38b11a8ac8ae0a82c0c16f8f301c3761545ab41a",
+    "ycsbc/ycsbc.cc": "db03d1dd24790b0d4cf84ef35c7a47caed545bb9bcdebe4977e08d589e9e806a"
+  },
+  "driver_sha256": "d98633f8406aedc48b1c8a6d8302ac18ccba5f82b857afb256f8136918c51cd4",
+  "script_sha256": "d0f6775ba2793bd6e0d3aa896c9d9809ed73b217f96712ea6991f8d0e3ce9828",
+  "binaries": {
+    "native-p3": "464a3b0c6ffc1a42ff9cf6873203f7912e4b354f560d4934f3a5ddd691b7215f",
+    "x86-p1": "15f3c723518cb3b4157df193069df057ac010be8ca442228c650de0f1b35b3a4",
+    "x86-p3": "0382ab80893744ffdbe96cedeb43f09c5f26d93818a136c1070d695c5c2daeb8"
+  },
+  "native_allocator": "mimalloc",
+  "x86_allocator": "system via benchmark-only include shims",
+  "x86_execution": "Rosetta on ARM64, not native x86 hardware",
+  "records": 100000,
+  "updates": 300000,
+  "clients": 4,
+  "gc": false,
+  "seed": 182,
+  "order_seed": 20260918,
+  "warmups": 1,
+  "runs": 3,
+  "timing_scope": "submission through completed updates; validation/build excluded",
+  "completed": true,
+  "executions": [
+    {
+      "row": {
+        "arch": "native",
+        "pipes": 3,
+        "workers": 1,
+        "workload": "update",
+        "run": 1,
+        "returncode": -11,
+        "status": "process_failure"
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/native-p3",
+        "1",
+        "update",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "native",
+        "pipes": 3,
+        "workers": 1,
+        "workload": "insert",
+        "run": 1,
+        "returncode": -11,
+        "status": "process_failure"
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/native-p3",
+        "1",
+        "insert",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "native",
+        "pipes": 3,
+        "workers": 2,
+        "workload": "update",
+        "run": 1,
+        "returncode": -11,
+        "status": "process_failure"
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/native-p3",
+        "2",
+        "update",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "native",
+        "pipes": 3,
+        "workers": 2,
+        "workload": "insert",
+        "run": 1,
+        "returncode": -11,
+        "status": "process_failure"
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/native-p3",
+        "2",
+        "insert",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "native",
+        "pipes": 3,
+        "workers": 4,
+        "workload": "update",
+        "run": 1,
+        "returncode": -11,
+        "status": "process_failure"
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/native-p3",
+        "4",
+        "update",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "native",
+        "pipes": 3,
+        "workers": 4,
+        "workload": "insert",
+        "run": 1,
+        "returncode": -11,
+        "status": "process_failure"
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/native-p3",
+        "4",
+        "insert",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 1,
+        "workers": 2,
+        "workload": "insert",
+        "run": 0,
+        "returncode": 0,
+        "status": "valid",
+        "seconds": 0.581992,
+        "mismatches": 0,
+        "peak_rss_bytes": 731611136
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p1",
+        "2",
+        "insert",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "{\"workers\":2,\"clients\":4,\"pipes\":1,\"gc\":false,\"records\":100000,\"updates\":300000,\"workload\":\"insert\",\"seconds\":0.581992,\"peak_rss_bytes\":731611136,\"live_bytes\":11645952,\"mismatches\":0}\n",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 3,
+        "workers": 2,
+        "workload": "update",
+        "run": 0,
+        "returncode": 3,
+        "status": "incorrect",
+        "seconds": 1.23977,
+        "mismatches": 87500,
+        "peak_rss_bytes": 1748025344
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p3",
+        "2",
+        "update",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "{\"workers\":2,\"clients\":4,\"pipes\":3,\"gc\":false,\"records\":100000,\"updates\":300000,\"workload\":\"update\",\"seconds\":1.23977,\"peak_rss_bytes\":1748025344,\"live_bytes\":3656960,\"mismatches\":87500}\n",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 1,
+        "workers": 4,
+        "workload": "update",
+        "run": 0,
+        "returncode": 3,
+        "status": "incorrect",
+        "seconds": 3.62638,
+        "mismatches": 87500,
+        "peak_rss_bytes": 2720260096
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p1",
+        "4",
+        "update",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "{\"workers\":4,\"clients\":4,\"pipes\":1,\"gc\":false,\"records\":100000,\"updates\":300000,\"workload\":\"update\",\"seconds\":3.62638,\"peak_rss_bytes\":2720260096,\"live_bytes\":3656960,\"mismatches\":87500}\n",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 3,
+        "workers": 2,
+        "workload": "insert",
+        "run": 0,
+        "returncode": 0,
+        "status": "valid",
+        "seconds": 1.939,
+        "mismatches": 0,
+        "peak_rss_bytes": 3226472448
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p3",
+        "2",
+        "insert",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "{\"workers\":2,\"clients\":4,\"pipes\":3,\"gc\":false,\"records\":100000,\"updates\":300000,\"workload\":\"insert\",\"seconds\":1.939,\"peak_rss_bytes\":3226472448,\"live_bytes\":11654656,\"mismatches\":0}\n",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 3,
+        "workers": 8,
+        "workload": "update",
+        "run": 0,
+        "returncode": 3,
+        "status": "incorrect",
+        "seconds": 27.5101,
+        "mismatches": 87500,
+        "peak_rss_bytes": 3349319680
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p3",
+        "8",
+        "update",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "{\"workers\":8,\"clients\":4,\"pipes\":3,\"gc\":false,\"records\":100000,\"updates\":300000,\"workload\":\"update\",\"seconds\":27.5101,\"peak_rss_bytes\":3349319680,\"live_bytes\":3656960,\"mismatches\":87500}\n",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 1,
+        "workers": 1,
+        "workload": "insert",
+        "run": 0,
+        "returncode": 0,
+        "status": "valid",
+        "seconds": 0.54178,
+        "mismatches": 0,
+        "peak_rss_bytes": 551690240
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p1",
+        "1",
+        "insert",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "{\"workers\":1,\"clients\":4,\"pipes\":1,\"gc\":false,\"records\":100000,\"updates\":300000,\"workload\":\"insert\",\"seconds\":0.54178,\"peak_rss_bytes\":551690240,\"live_bytes\":11653888,\"mismatches\":0}\n",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 1,
+        "workers": 8,
+        "workload": "insert",
+        "run": 0,
+        "returncode": 0,
+        "status": "valid",
+        "seconds": 11.6728,
+        "mismatches": 0,
+        "peak_rss_bytes": 3268055040
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p1",
+        "8",
+        "insert",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "{\"workers\":8,\"clients\":4,\"pipes\":1,\"gc\":false,\"records\":100000,\"updates\":300000,\"workload\":\"insert\",\"seconds\":11.6728,\"peak_rss_bytes\":3268055040,\"live_bytes\":11660800,\"mismatches\":0}\n",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 3,
+        "workers": 1,
+        "workload": "update",
+        "run": 0,
+        "returncode": 3,
+        "status": "incorrect",
+        "seconds": 0.936552,
+        "mismatches": 87500,
+        "peak_rss_bytes": 1302274048
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p3",
+        "1",
+        "update",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "{\"workers\":1,\"clients\":4,\"pipes\":3,\"gc\":false,\"records\":100000,\"updates\":300000,\"workload\":\"update\",\"seconds\":0.936552,\"peak_rss_bytes\":1302274048,\"live_bytes\":3656960,\"mismatches\":87500}\n",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 1,
+        "workers": 4,
+        "workload": "insert",
+        "run": 0,
+        "returncode": 0,
+        "status": "valid",
+        "seconds": 2.33193,
+        "mismatches": 0,
+        "peak_rss_bytes": 3400830976
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p1",
+        "4",
+        "insert",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "{\"workers\":4,\"clients\":4,\"pipes\":1,\"gc\":false,\"records\":100000,\"updates\":300000,\"workload\":\"insert\",\"seconds\":2.33193,\"peak_rss_bytes\":3400830976,\"live_bytes\":11640576,\"mismatches\":0}\n",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 1,
+        "workers": 8,
+        "workload": "update",
+        "run": 0,
+        "returncode": 3,
+        "status": "incorrect",
+        "seconds": 2.8693,
+        "mismatches": 87500,
+        "peak_rss_bytes": 1306636288
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p1",
+        "8",
+        "update",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "{\"workers\":8,\"clients\":4,\"pipes\":1,\"gc\":false,\"records\":100000,\"updates\":300000,\"workload\":\"update\",\"seconds\":2.8693,\"peak_rss_bytes\":1306636288,\"live_bytes\":3656960,\"mismatches\":87500}\n",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 3,
+        "workers": 4,
+        "workload": "update",
+        "run": 0,
+        "returncode": 3,
+        "status": "incorrect",
+        "seconds": 1.77898,
+        "mismatches": 87500,
+        "peak_rss_bytes": 2976837632
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p3",
+        "4",
+        "update",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "{\"workers\":4,\"clients\":4,\"pipes\":3,\"gc\":false,\"records\":100000,\"updates\":300000,\"workload\":\"update\",\"seconds\":1.77898,\"peak_rss_bytes\":2976837632,\"live_bytes\":3656960,\"mismatches\":87500}\n",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 1,
+        "workers": 1,
+        "workload": "update",
+        "run": 0,
+        "returncode": 3,
+        "status": "incorrect",
+        "seconds": 0.509187,
+        "mismatches": 87500,
+        "peak_rss_bytes": 544133120
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p1",
+        "1",
+        "update",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "{\"workers\":1,\"clients\":4,\"pipes\":1,\"gc\":false,\"records\":100000,\"updates\":300000,\"workload\":\"update\",\"seconds\":0.509187,\"peak_rss_bytes\":544133120,\"live_bytes\":3656960,\"mismatches\":87500}\n",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 3,
+        "workers": 8,
+        "workload": "insert",
+        "run": 0,
+        "returncode": 0,
+        "status": "valid",
+        "seconds": 40.9555,
+        "mismatches": 0,
+        "peak_rss_bytes": 2036998144
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p3",
+        "8",
+        "insert",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "{\"workers\":8,\"clients\":4,\"pipes\":3,\"gc\":false,\"records\":100000,\"updates\":300000,\"workload\":\"insert\",\"seconds\":40.9555,\"peak_rss_bytes\":2036998144,\"live_bytes\":11633664,\"mismatches\":0}\n",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 1,
+        "workers": 2,
+        "workload": "update",
+        "run": 0,
+        "returncode": 3,
+        "status": "incorrect",
+        "seconds": 0.585738,
+        "mismatches": 87500,
+        "peak_rss_bytes": 831123456
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p1",
+        "2",
+        "update",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "{\"workers\":2,\"clients\":4,\"pipes\":1,\"gc\":false,\"records\":100000,\"updates\":300000,\"workload\":\"update\",\"seconds\":0.585738,\"peak_rss_bytes\":831123456,\"live_bytes\":3656960,\"mismatches\":87500}\n",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 3,
+        "workers": 4,
+        "workload": "insert",
+        "run": 0,
+        "returncode": 0,
+        "status": "valid",
+        "seconds": 2.34854,
+        "mismatches": 0,
+        "peak_rss_bytes": 3272232960
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p3",
+        "4",
+        "insert",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "{\"workers\":4,\"clients\":4,\"pipes\":3,\"gc\":false,\"records\":100000,\"updates\":300000,\"workload\":\"insert\",\"seconds\":2.34854,\"peak_rss_bytes\":3272232960,\"live_bytes\":11644416,\"mismatches\":0}\n",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 3,
+        "workers": 1,
+        "workload": "insert",
+        "run": 0,
+        "returncode": 0,
+        "status": "valid",
+        "seconds": 1.99144,
+        "mismatches": 0,
+        "peak_rss_bytes": 3222405120
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p3",
+        "1",
+        "insert",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "{\"workers\":1,\"clients\":4,\"pipes\":3,\"gc\":false,\"records\":100000,\"updates\":300000,\"workload\":\"insert\",\"seconds\":1.99144,\"peak_rss_bytes\":3222405120,\"live_bytes\":11632128,\"mismatches\":0}\n",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 3,
+        "workers": 8,
+        "workload": "update",
+        "run": 1,
+        "returncode": 3,
+        "status": "incorrect",
+        "seconds": 29.5182,
+        "mismatches": 87500,
+        "peak_rss_bytes": 3250089984
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p3",
+        "8",
+        "update",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "{\"workers\":8,\"clients\":4,\"pipes\":3,\"gc\":false,\"records\":100000,\"updates\":300000,\"workload\":\"update\",\"seconds\":29.5182,\"peak_rss_bytes\":3250089984,\"live_bytes\":3656960,\"mismatches\":87500}\n",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 3,
+        "workers": 2,
+        "workload": "insert",
+        "run": 1,
+        "returncode": 0,
+        "status": "valid",
+        "seconds": 2.13239,
+        "mismatches": 0,
+        "peak_rss_bytes": 3252891648
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p3",
+        "2",
+        "insert",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "{\"workers\":2,\"clients\":4,\"pipes\":3,\"gc\":false,\"records\":100000,\"updates\":300000,\"workload\":\"insert\",\"seconds\":2.13239,\"peak_rss_bytes\":3252891648,\"live_bytes\":11640576,\"mismatches\":0}\n",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 1,
+        "workers": 8,
+        "workload": "update",
+        "run": 1,
+        "returncode": 3,
+        "status": "incorrect",
+        "seconds": 5.85682,
+        "mismatches": 87500,
+        "peak_rss_bytes": 3030986752
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p1",
+        "8",
+        "update",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "{\"workers\":8,\"clients\":4,\"pipes\":1,\"gc\":false,\"records\":100000,\"updates\":300000,\"workload\":\"update\",\"seconds\":5.85682,\"peak_rss_bytes\":3030986752,\"live_bytes\":3656960,\"mismatches\":87500}\n",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 3,
+        "workers": 1,
+        "workload": "insert",
+        "run": 1,
+        "returncode": 0,
+        "status": "valid",
+        "seconds": 2.13045,
+        "mismatches": 0,
+        "peak_rss_bytes": 3308355584
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p3",
+        "1",
+        "insert",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "{\"workers\":1,\"clients\":4,\"pipes\":3,\"gc\":false,\"records\":100000,\"updates\":300000,\"workload\":\"insert\",\"seconds\":2.13045,\"peak_rss_bytes\":3308355584,\"live_bytes\":11643904,\"mismatches\":0}\n",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 1,
+        "workers": 8,
+        "workload": "insert",
+        "run": 1,
+        "returncode": 0,
+        "status": "valid",
+        "seconds": 13.9019,
+        "mismatches": 0,
+        "peak_rss_bytes": 3145269248
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p1",
+        "8",
+        "insert",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "{\"workers\":8,\"clients\":4,\"pipes\":1,\"gc\":false,\"records\":100000,\"updates\":300000,\"workload\":\"insert\",\"seconds\":13.9019,\"peak_rss_bytes\":3145269248,\"live_bytes\":11632128,\"mismatches\":0}\n",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 3,
+        "workers": 2,
+        "workload": "update",
+        "run": 1,
+        "returncode": 3,
+        "status": "incorrect",
+        "seconds": 1.02962,
+        "mismatches": 87500,
+        "peak_rss_bytes": 1181003776
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p3",
+        "2",
+        "update",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "{\"workers\":2,\"clients\":4,\"pipes\":3,\"gc\":false,\"records\":100000,\"updates\":300000,\"workload\":\"update\",\"seconds\":1.02962,\"peak_rss_bytes\":1181003776,\"live_bytes\":3656960,\"mismatches\":87500}\n",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 3,
+        "workers": 1,
+        "workload": "update",
+        "run": 1,
+        "returncode": 3,
+        "status": "incorrect",
+        "seconds": 2.33459,
+        "mismatches": 87500,
+        "peak_rss_bytes": 3104956416
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p3",
+        "1",
+        "update",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "{\"workers\":1,\"clients\":4,\"pipes\":3,\"gc\":false,\"records\":100000,\"updates\":300000,\"workload\":\"update\",\"seconds\":2.33459,\"peak_rss_bytes\":3104956416,\"live_bytes\":3656960,\"mismatches\":87500}\n",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 3,
+        "workers": 4,
+        "workload": "update",
+        "run": 1,
+        "returncode": 3,
+        "status": "incorrect",
+        "seconds": 2.92332,
+        "mismatches": 87500,
+        "peak_rss_bytes": 3138342912
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p3",
+        "4",
+        "update",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "{\"workers\":4,\"clients\":4,\"pipes\":3,\"gc\":false,\"records\":100000,\"updates\":300000,\"workload\":\"update\",\"seconds\":2.92332,\"peak_rss_bytes\":3138342912,\"live_bytes\":3656960,\"mismatches\":87500}\n",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 1,
+        "workers": 4,
+        "workload": "update",
+        "run": 1,
+        "returncode": 3,
+        "status": "incorrect",
+        "seconds": 2.19692,
+        "mismatches": 87500,
+        "peak_rss_bytes": 3083567104
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p1",
+        "4",
+        "update",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "{\"workers\":4,\"clients\":4,\"pipes\":1,\"gc\":false,\"records\":100000,\"updates\":300000,\"workload\":\"update\",\"seconds\":2.19692,\"peak_rss_bytes\":3083567104,\"live_bytes\":3656960,\"mismatches\":87500}\n",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 1,
+        "workers": 2,
+        "workload": "update",
+        "run": 1,
+        "returncode": 3,
+        "status": "incorrect",
+        "seconds": 1.10432,
+        "mismatches": 87500,
+        "peak_rss_bytes": 2301681664
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p1",
+        "2",
+        "update",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "{\"workers\":2,\"clients\":4,\"pipes\":1,\"gc\":false,\"records\":100000,\"updates\":300000,\"workload\":\"update\",\"seconds\":1.10432,\"peak_rss_bytes\":2301681664,\"live_bytes\":3656960,\"mismatches\":87500}\n",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 1,
+        "workers": 4,
+        "workload": "insert",
+        "run": 1,
+        "returncode": 0,
+        "status": "valid",
+        "seconds": 1.04218,
+        "mismatches": 0,
+        "peak_rss_bytes": 1563279360
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p1",
+        "4",
+        "insert",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "{\"workers\":4,\"clients\":4,\"pipes\":1,\"gc\":false,\"records\":100000,\"updates\":300000,\"workload\":\"insert\",\"seconds\":1.04218,\"peak_rss_bytes\":1563279360,\"live_bytes\":11638784,\"mismatches\":0}\n",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 1,
+        "workers": 1,
+        "workload": "update",
+        "run": 1,
+        "returncode": 3,
+        "status": "incorrect",
+        "seconds": 0.600867,
+        "mismatches": 87500,
+        "peak_rss_bytes": 598929408
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p1",
+        "1",
+        "update",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "{\"workers\":1,\"clients\":4,\"pipes\":1,\"gc\":false,\"records\":100000,\"updates\":300000,\"workload\":\"update\",\"seconds\":0.600867,\"peak_rss_bytes\":598929408,\"live_bytes\":3656960,\"mismatches\":87500}\n",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 3,
+        "workers": 4,
+        "workload": "insert",
+        "run": 1,
+        "returncode": 0,
+        "status": "valid",
+        "seconds": 1.65054,
+        "mismatches": 0,
+        "peak_rss_bytes": 2919821312
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p3",
+        "4",
+        "insert",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "{\"workers\":4,\"clients\":4,\"pipes\":3,\"gc\":false,\"records\":100000,\"updates\":300000,\"workload\":\"insert\",\"seconds\":1.65054,\"peak_rss_bytes\":2919821312,\"live_bytes\":11665920,\"mismatches\":0}\n",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 3,
+        "workers": 8,
+        "workload": "insert",
+        "run": 1,
+        "returncode": "timeout",
+        "status": "timeout"
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p3",
+        "8",
+        "insert",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "None",
+      "stderr": "None"
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 1,
+        "workers": 1,
+        "workload": "insert",
+        "run": 1,
+        "returncode": 0,
+        "status": "valid",
+        "seconds": 0.557177,
+        "mismatches": 0,
+        "peak_rss_bytes": 558870528
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p1",
+        "1",
+        "insert",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "{\"workers\":1,\"clients\":4,\"pipes\":1,\"gc\":false,\"records\":100000,\"updates\":300000,\"workload\":\"insert\",\"seconds\":0.557177,\"peak_rss_bytes\":558870528,\"live_bytes\":11680000,\"mismatches\":0}\n",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 1,
+        "workers": 2,
+        "workload": "insert",
+        "run": 1,
+        "returncode": 0,
+        "status": "valid",
+        "seconds": 0.484087,
+        "mismatches": 0,
+        "peak_rss_bytes": 582193152
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p1",
+        "2",
+        "insert",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "{\"workers\":2,\"clients\":4,\"pipes\":1,\"gc\":false,\"records\":100000,\"updates\":300000,\"workload\":\"insert\",\"seconds\":0.484087,\"peak_rss_bytes\":582193152,\"live_bytes\":11648512,\"mismatches\":0}\n",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 1,
+        "workers": 4,
+        "workload": "update",
+        "run": 2,
+        "returncode": 3,
+        "status": "incorrect",
+        "seconds": 1.14867,
+        "mismatches": 87500,
+        "peak_rss_bytes": 2447765504
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p1",
+        "4",
+        "update",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "{\"workers\":4,\"clients\":4,\"pipes\":1,\"gc\":false,\"records\":100000,\"updates\":300000,\"workload\":\"update\",\"seconds\":1.14867,\"peak_rss_bytes\":2447765504,\"live_bytes\":3656960,\"mismatches\":87500}\n",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 1,
+        "workers": 8,
+        "workload": "update",
+        "run": 2,
+        "returncode": 3,
+        "status": "incorrect",
+        "seconds": 4.51635,
+        "mismatches": 87500,
+        "peak_rss_bytes": 1561018368
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p1",
+        "8",
+        "update",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "{\"workers\":8,\"clients\":4,\"pipes\":1,\"gc\":false,\"records\":100000,\"updates\":300000,\"workload\":\"update\",\"seconds\":4.51635,\"peak_rss_bytes\":1561018368,\"live_bytes\":3656960,\"mismatches\":87500}\n",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 3,
+        "workers": 4,
+        "workload": "insert",
+        "run": 2,
+        "returncode": 0,
+        "status": "valid",
+        "seconds": 1.08154,
+        "mismatches": 0,
+        "peak_rss_bytes": 1459224576
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p3",
+        "4",
+        "insert",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "{\"workers\":4,\"clients\":4,\"pipes\":3,\"gc\":false,\"records\":100000,\"updates\":300000,\"workload\":\"insert\",\"seconds\":1.08154,\"peak_rss_bytes\":1459224576,\"live_bytes\":11629568,\"mismatches\":0}\n",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 1,
+        "workers": 4,
+        "workload": "insert",
+        "run": 2,
+        "returncode": 0,
+        "status": "valid",
+        "seconds": 2.34575,
+        "mismatches": 0,
+        "peak_rss_bytes": 3156545536
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p1",
+        "4",
+        "insert",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "{\"workers\":4,\"clients\":4,\"pipes\":1,\"gc\":false,\"records\":100000,\"updates\":300000,\"workload\":\"insert\",\"seconds\":2.34575,\"peak_rss_bytes\":3156545536,\"live_bytes\":11634432,\"mismatches\":0}\n",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 1,
+        "workers": 8,
+        "workload": "insert",
+        "run": 2,
+        "returncode": 0,
+        "status": "valid",
+        "seconds": 11.8289,
+        "mismatches": 0,
+        "peak_rss_bytes": 3150135296
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p1",
+        "8",
+        "insert",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "{\"workers\":8,\"clients\":4,\"pipes\":1,\"gc\":false,\"records\":100000,\"updates\":300000,\"workload\":\"insert\",\"seconds\":11.8289,\"peak_rss_bytes\":3150135296,\"live_bytes\":11653632,\"mismatches\":0}\n",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 3,
+        "workers": 4,
+        "workload": "update",
+        "run": 2,
+        "returncode": 3,
+        "status": "incorrect",
+        "seconds": 1.374,
+        "mismatches": 87500,
+        "peak_rss_bytes": 2178871296
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p3",
+        "4",
+        "update",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "{\"workers\":4,\"clients\":4,\"pipes\":3,\"gc\":false,\"records\":100000,\"updates\":300000,\"workload\":\"update\",\"seconds\":1.374,\"peak_rss_bytes\":2178871296,\"live_bytes\":3656960,\"mismatches\":87500}\n",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 1,
+        "workers": 1,
+        "workload": "update",
+        "run": 2,
+        "returncode": 3,
+        "status": "incorrect",
+        "seconds": 0.483624,
+        "mismatches": 87500,
+        "peak_rss_bytes": 511725568
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p1",
+        "1",
+        "update",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "{\"workers\":1,\"clients\":4,\"pipes\":1,\"gc\":false,\"records\":100000,\"updates\":300000,\"workload\":\"update\",\"seconds\":0.483624,\"peak_rss_bytes\":511725568,\"live_bytes\":3656960,\"mismatches\":87500}\n",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 3,
+        "workers": 1,
+        "workload": "insert",
+        "run": 2,
+        "returncode": 0,
+        "status": "valid",
+        "seconds": 1.37946,
+        "mismatches": 0,
+        "peak_rss_bytes": 2465095680
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p3",
+        "1",
+        "insert",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "{\"workers\":1,\"clients\":4,\"pipes\":3,\"gc\":false,\"records\":100000,\"updates\":300000,\"workload\":\"insert\",\"seconds\":1.37946,\"peak_rss_bytes\":2465095680,\"live_bytes\":11626496,\"mismatches\":0}\n",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 3,
+        "workers": 2,
+        "workload": "update",
+        "run": 2,
+        "returncode": 3,
+        "status": "incorrect",
+        "seconds": 1.87991,
+        "mismatches": 87500,
+        "peak_rss_bytes": 3272871936
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p3",
+        "2",
+        "update",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "{\"workers\":2,\"clients\":4,\"pipes\":3,\"gc\":false,\"records\":100000,\"updates\":300000,\"workload\":\"update\",\"seconds\":1.87991,\"peak_rss_bytes\":3272871936,\"live_bytes\":3656960,\"mismatches\":87500}\n",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 3,
+        "workers": 2,
+        "workload": "insert",
+        "run": 2,
+        "returncode": 0,
+        "status": "valid",
+        "seconds": 1.33618,
+        "mismatches": 0,
+        "peak_rss_bytes": 2460053504
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p3",
+        "2",
+        "insert",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "{\"workers\":2,\"clients\":4,\"pipes\":3,\"gc\":false,\"records\":100000,\"updates\":300000,\"workload\":\"insert\",\"seconds\":1.33618,\"peak_rss_bytes\":2460053504,\"live_bytes\":11624192,\"mismatches\":0}\n",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 1,
+        "workers": 2,
+        "workload": "insert",
+        "run": 2,
+        "returncode": 0,
+        "status": "valid",
+        "seconds": 0.569149,
+        "mismatches": 0,
+        "peak_rss_bytes": 764366848
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p1",
+        "2",
+        "insert",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "{\"workers\":2,\"clients\":4,\"pipes\":1,\"gc\":false,\"records\":100000,\"updates\":300000,\"workload\":\"insert\",\"seconds\":0.569149,\"peak_rss_bytes\":764366848,\"live_bytes\":11653376,\"mismatches\":0}\n",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 1,
+        "workers": 2,
+        "workload": "update",
+        "run": 2,
+        "returncode": 3,
+        "status": "incorrect",
+        "seconds": 1.3452,
+        "mismatches": 87500,
+        "peak_rss_bytes": 2799005696
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p1",
+        "2",
+        "update",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "{\"workers\":2,\"clients\":4,\"pipes\":1,\"gc\":false,\"records\":100000,\"updates\":300000,\"workload\":\"update\",\"seconds\":1.3452,\"peak_rss_bytes\":2799005696,\"live_bytes\":3656960,\"mismatches\":87500}\n",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 3,
+        "workers": 8,
+        "workload": "update",
+        "run": 2,
+        "returncode": 3,
+        "status": "incorrect",
+        "seconds": 26.2998,
+        "mismatches": 87500,
+        "peak_rss_bytes": 3223785472
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p3",
+        "8",
+        "update",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "{\"workers\":8,\"clients\":4,\"pipes\":3,\"gc\":false,\"records\":100000,\"updates\":300000,\"workload\":\"update\",\"seconds\":26.2998,\"peak_rss_bytes\":3223785472,\"live_bytes\":3656960,\"mismatches\":87500}\n",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 1,
+        "workers": 1,
+        "workload": "insert",
+        "run": 2,
+        "returncode": 0,
+        "status": "valid",
+        "seconds": 0.568876,
+        "mismatches": 0,
+        "peak_rss_bytes": 585236480
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p1",
+        "1",
+        "insert",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "{\"workers\":1,\"clients\":4,\"pipes\":1,\"gc\":false,\"records\":100000,\"updates\":300000,\"workload\":\"insert\",\"seconds\":0.568876,\"peak_rss_bytes\":585236480,\"live_bytes\":11663872,\"mismatches\":0}\n",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 3,
+        "workers": 1,
+        "workload": "update",
+        "run": 2,
+        "returncode": 3,
+        "status": "incorrect",
+        "seconds": 0.792488,
+        "mismatches": 87500,
+        "peak_rss_bytes": 890314752
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p3",
+        "1",
+        "update",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "{\"workers\":1,\"clients\":4,\"pipes\":3,\"gc\":false,\"records\":100000,\"updates\":300000,\"workload\":\"update\",\"seconds\":0.792488,\"peak_rss_bytes\":890314752,\"live_bytes\":3656960,\"mismatches\":87500}\n",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 3,
+        "workers": 8,
+        "workload": "insert",
+        "run": 2,
+        "returncode": "timeout",
+        "status": "timeout"
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p3",
+        "8",
+        "insert",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "None",
+      "stderr": "None"
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 3,
+        "workers": 2,
+        "workload": "update",
+        "run": 3,
+        "returncode": 3,
+        "status": "incorrect",
+        "seconds": 1.20868,
+        "mismatches": 87500,
+        "peak_rss_bytes": 1984212992
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p3",
+        "2",
+        "update",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "{\"workers\":2,\"clients\":4,\"pipes\":3,\"gc\":false,\"records\":100000,\"updates\":300000,\"workload\":\"update\",\"seconds\":1.20868,\"peak_rss_bytes\":1984212992,\"live_bytes\":3656960,\"mismatches\":87500}\n",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 1,
+        "workers": 8,
+        "workload": "insert",
+        "run": 3,
+        "returncode": 0,
+        "status": "valid",
+        "seconds": 9.65064,
+        "mismatches": 0,
+        "peak_rss_bytes": 3323170816
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p1",
+        "8",
+        "insert",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "{\"workers\":8,\"clients\":4,\"pipes\":1,\"gc\":false,\"records\":100000,\"updates\":300000,\"workload\":\"insert\",\"seconds\":9.65064,\"peak_rss_bytes\":3323170816,\"live_bytes\":11638272,\"mismatches\":0}\n",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 3,
+        "workers": 4,
+        "workload": "update",
+        "run": 3,
+        "returncode": 3,
+        "status": "incorrect",
+        "seconds": 1.85957,
+        "mismatches": 87500,
+        "peak_rss_bytes": 3330596864
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p3",
+        "4",
+        "update",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "{\"workers\":4,\"clients\":4,\"pipes\":3,\"gc\":false,\"records\":100000,\"updates\":300000,\"workload\":\"update\",\"seconds\":1.85957,\"peak_rss_bytes\":3330596864,\"live_bytes\":3656960,\"mismatches\":87500}\n",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 1,
+        "workers": 4,
+        "workload": "insert",
+        "run": 3,
+        "returncode": 0,
+        "status": "valid",
+        "seconds": 0.864444,
+        "mismatches": 0,
+        "peak_rss_bytes": 1405480960
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p1",
+        "4",
+        "insert",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "{\"workers\":4,\"clients\":4,\"pipes\":1,\"gc\":false,\"records\":100000,\"updates\":300000,\"workload\":\"insert\",\"seconds\":0.864444,\"peak_rss_bytes\":1405480960,\"live_bytes\":11633408,\"mismatches\":0}\n",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 1,
+        "workers": 1,
+        "workload": "insert",
+        "run": 3,
+        "returncode": 0,
+        "status": "valid",
+        "seconds": 0.513778,
+        "mismatches": 0,
+        "peak_rss_bytes": 603234304
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p1",
+        "1",
+        "insert",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "{\"workers\":1,\"clients\":4,\"pipes\":1,\"gc\":false,\"records\":100000,\"updates\":300000,\"workload\":\"insert\",\"seconds\":0.513778,\"peak_rss_bytes\":603234304,\"live_bytes\":11652352,\"mismatches\":0}\n",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 3,
+        "workers": 1,
+        "workload": "insert",
+        "run": 3,
+        "returncode": 0,
+        "status": "valid",
+        "seconds": 1.67458,
+        "mismatches": 0,
+        "peak_rss_bytes": 3366051840
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p3",
+        "1",
+        "insert",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "{\"workers\":1,\"clients\":4,\"pipes\":3,\"gc\":false,\"records\":100000,\"updates\":300000,\"workload\":\"insert\",\"seconds\":1.67458,\"peak_rss_bytes\":3366051840,\"live_bytes\":11643392,\"mismatches\":0}\n",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 1,
+        "workers": 8,
+        "workload": "update",
+        "run": 3,
+        "returncode": 3,
+        "status": "incorrect",
+        "seconds": 5.69586,
+        "mismatches": 87500,
+        "peak_rss_bytes": 2783911936
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p1",
+        "8",
+        "update",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "{\"workers\":8,\"clients\":4,\"pipes\":1,\"gc\":false,\"records\":100000,\"updates\":300000,\"workload\":\"update\",\"seconds\":5.69586,\"peak_rss_bytes\":2783911936,\"live_bytes\":3656960,\"mismatches\":87500}\n",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 3,
+        "workers": 2,
+        "workload": "insert",
+        "run": 3,
+        "returncode": 0,
+        "status": "valid",
+        "seconds": 1.25037,
+        "mismatches": 0,
+        "peak_rss_bytes": 2428964864
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p3",
+        "2",
+        "insert",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "{\"workers\":2,\"clients\":4,\"pipes\":3,\"gc\":false,\"records\":100000,\"updates\":300000,\"workload\":\"insert\",\"seconds\":1.25037,\"peak_rss_bytes\":2428964864,\"live_bytes\":11650304,\"mismatches\":0}\n",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 3,
+        "workers": 4,
+        "workload": "insert",
+        "run": 3,
+        "returncode": 0,
+        "status": "valid",
+        "seconds": 1.59504,
+        "mismatches": 0,
+        "peak_rss_bytes": 3124469760
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p3",
+        "4",
+        "insert",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "{\"workers\":4,\"clients\":4,\"pipes\":3,\"gc\":false,\"records\":100000,\"updates\":300000,\"workload\":\"insert\",\"seconds\":1.59504,\"peak_rss_bytes\":3124469760,\"live_bytes\":11633664,\"mismatches\":0}\n",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 1,
+        "workers": 1,
+        "workload": "update",
+        "run": 3,
+        "returncode": 3,
+        "status": "incorrect",
+        "seconds": 0.610849,
+        "mismatches": 87500,
+        "peak_rss_bytes": 603529216
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p1",
+        "1",
+        "update",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "{\"workers\":1,\"clients\":4,\"pipes\":1,\"gc\":false,\"records\":100000,\"updates\":300000,\"workload\":\"update\",\"seconds\":0.610849,\"peak_rss_bytes\":603529216,\"live_bytes\":3656960,\"mismatches\":87500}\n",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 1,
+        "workers": 4,
+        "workload": "update",
+        "run": 3,
+        "returncode": 3,
+        "status": "incorrect",
+        "seconds": 1.83672,
+        "mismatches": 87500,
+        "peak_rss_bytes": 3367682048
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p1",
+        "4",
+        "update",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "{\"workers\":4,\"clients\":4,\"pipes\":1,\"gc\":false,\"records\":100000,\"updates\":300000,\"workload\":\"update\",\"seconds\":1.83672,\"peak_rss_bytes\":3367682048,\"live_bytes\":3656960,\"mismatches\":87500}\n",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 1,
+        "workers": 2,
+        "workload": "update",
+        "run": 3,
+        "returncode": 3,
+        "status": "incorrect",
+        "seconds": 0.887838,
+        "mismatches": 87500,
+        "peak_rss_bytes": 1420963840
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p1",
+        "2",
+        "update",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "{\"workers\":2,\"clients\":4,\"pipes\":1,\"gc\":false,\"records\":100000,\"updates\":300000,\"workload\":\"update\",\"seconds\":0.887838,\"peak_rss_bytes\":1420963840,\"live_bytes\":3656960,\"mismatches\":87500}\n",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 1,
+        "workers": 2,
+        "workload": "insert",
+        "run": 3,
+        "returncode": 0,
+        "status": "valid",
+        "seconds": 0.685456,
+        "mismatches": 0,
+        "peak_rss_bytes": 1175244800
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p1",
+        "2",
+        "insert",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "{\"workers\":2,\"clients\":4,\"pipes\":1,\"gc\":false,\"records\":100000,\"updates\":300000,\"workload\":\"insert\",\"seconds\":0.685456,\"peak_rss_bytes\":1175244800,\"live_bytes\":11645440,\"mismatches\":0}\n",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 3,
+        "workers": 8,
+        "workload": "update",
+        "run": 3,
+        "returncode": 3,
+        "status": "incorrect",
+        "seconds": 20.6046,
+        "mismatches": 87500,
+        "peak_rss_bytes": 2893697024
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p3",
+        "8",
+        "update",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "{\"workers\":8,\"clients\":4,\"pipes\":3,\"gc\":false,\"records\":100000,\"updates\":300000,\"workload\":\"update\",\"seconds\":20.6046,\"peak_rss_bytes\":2893697024,\"live_bytes\":3656960,\"mismatches\":87500}\n",
+      "stderr": ""
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 3,
+        "workers": 8,
+        "workload": "insert",
+        "run": 3,
+        "returncode": "timeout",
+        "status": "timeout"
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p3",
+        "8",
+        "insert",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "None",
+      "stderr": "None"
+    },
+    {
+      "row": {
+        "arch": "x86",
+        "pipes": 3,
+        "workers": 1,
+        "workload": "update",
+        "run": 3,
+        "returncode": 3,
+        "status": "incorrect",
+        "seconds": 2.35141,
+        "mismatches": 87500,
+        "peak_rss_bytes": 3400699904
+      },
+      "command": [
+        "/Users/minrain/homework/Path_Copy_memory_version/Contrees/build/pristine-worker-scaling/x86-p3",
+        "1",
+        "update",
+        "100000",
+        "300000",
+        "4"
+      ],
+      "stdout": "{\"workers\":1,\"clients\":4,\"pipes\":3,\"gc\":false,\"records\":100000,\"updates\":300000,\"workload\":\"update\",\"seconds\":2.35141,\"peak_rss_bytes\":3400699904,\"live_bytes\":3656960,\"mismatches\":87500}\n",
+      "stderr": ""
+    }
+  ]
+}

@@ -18,16 +18,13 @@ static inline constexpr uint BUFFER_SIZE = std::bit_ceil<uint>(LIBCONCTRL_BUFFER
 template<typename T>
 T load_consume(T const volatile* addr)
 {
-  T v = *const_cast<T const volatile*>(addr);
-  std::atomic_signal_fence(std::memory_order_acq_rel);
-  return v;
+  return __atomic_load_n(addr, __ATOMIC_ACQUIRE);
 }
 
 template<typename T>
 void store_release(T volatile* addr, T v)
 {
-  std::atomic_signal_fence(std::memory_order_acq_rel);
-  *const_cast<T volatile*>(addr) = v;
+  __atomic_store_n(addr, v, __ATOMIC_RELEASE);
 }
 
 }

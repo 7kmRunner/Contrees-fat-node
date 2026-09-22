@@ -2,7 +2,9 @@
 
 #include <cstdint>
 #include <cstring>
+#if defined(__x86_64__) || defined(__i386__)
 #include <x86intrin.h>
+#endif
 
 #include "lib/common/arrayops.hpp"
 #include "lib/common/types.hpp"
@@ -11,6 +13,7 @@
 namespace art {
 
 static inline opt<uint8_t> node16_find(const node16* t, uint8_t pkey) {
+#if defined(__x86_64__) || defined(__i386__)
   uint bitfield =
     _mm_movemask_epi8(
       _mm_cmpeq_epi8(
@@ -19,9 +22,14 @@ static inline opt<uint8_t> node16_find(const node16* t, uint8_t pkey) {
     (~(~0U << t->size));
   if (!bitfield) { return std::nullopt; }
   return std::make_optional(__builtin_ctz(bitfield));
+#else
+  for (uint8_t i=0; i<t->size; ++i) if (t->keys[i] == pkey) { return std::make_optional(i); }
+  return std::nullopt;
+#endif
 }
 
 static inline uint8_t node16_findgt(const node16* t, uint8_t pkey) {
+#if defined(__AVX512BW__) && defined(__AVX512VL__)
   uint mask =
     _mm_cmp_epu8_mask(
       _mm_load_si128((__m128i *)((node16*)t)->keys),
@@ -30,6 +38,10 @@ static inline uint8_t node16_findgt(const node16* t, uint8_t pkey) {
     (~(~0U << t->size));
   if (!mask) { return t->size; }
   return __builtin_ctz(mask);
+#else
+  for (uint8_t i=0; i<t->size; ++i) if (t->keys[i] > pkey) return i;
+  return t->size;
+#endif
 }
 
 static inline nodeptr* node16_getch(node16* t, uint8_t idx) {

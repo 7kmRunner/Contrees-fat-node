@@ -1,0 +1,15 @@
+{
+  "platform": "macOS 26.6.2 arm64",
+  "compiler": "Apple clang version 17.0.0 (clang-1700.6.4.2)",
+  "allocator": "mimalloc 3.5",
+  "formal_rows": 144,
+  "sha256": {
+    "bench/concow_aert_bench": "08ddae63048c826d65760900f5222f13879a043518355b3fe5c86b10ada64df5",
+    "bench/concow_aert_bench.cpp": "46632613261e5358d7481de2de0e24e2ec3404ee8dcc1d969a664f43898288c7",
+    "bench/concow_aert_test.cpp": "13971c05bf8d0183167eb0c4b67d172aec0c3223e0be617df7e889ec644c43e7",
+    "bench/concow_aert_matrix.py": "e51e3bd4f3420df6bc6a80789cca0561fb576a5b4bc7bd9334007f123f017c72",
+    "lib/trees/aert/fat_merge.hpp": "b68ca4375cbb761f99aa0ad8fbcb5420927009f7307d5f08502a7ad468bd49f7",
+    "src/adapters/aert.hpp": "034ef4ffc1e7b44382c89e4241f890a393ba16e8558a3bf727eb1e8d6bd252ed",
+    "lib/conctrl/concow_fat.hpp": "f914874bc49d8a3a3d0be60b0a9635bb40e67d4ae8902c7d5b794a6a52fb21e8"
+  }
+}

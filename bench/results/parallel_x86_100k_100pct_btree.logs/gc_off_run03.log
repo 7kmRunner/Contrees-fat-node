@@ -1,0 +1,11 @@
+[REPORT] dataset: ycsbc/export/workload_memory_parallel_100pct.data
+[REPORT] scheduler: concow
+[REPORT] structure: btree
+[REPORT] num_clients: 32
+[REPORT] num_pipes: 1
+[REPORT] num_workers: 8
+[REPORT] gc: off
+[REPORT] num_records: 100000
+[REPORT] num_transactions: 100000
+[REPORT] init time (s): 0.03102938
+[REPORT] process time (s): 434.46305617

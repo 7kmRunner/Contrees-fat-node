@@ -4,9 +4,11 @@
 #include <cstdint>
 #include <cstring>
 #include <thread>
+#include <stdexcept>
 
 #include "common.hpp"
 #include "mpsc_list.hpp"
+#include "reclamation.hpp"
 
 namespace conctrl {
 
@@ -22,6 +24,20 @@ private:
 
   const uint n_pipes_;
   const uint n_workers_;
+  const uint8_t fat_slots_;
+  uint64_t last_structural_=0; // exclusively owned by the original entry pipe
+  std::atomic_uint64_t fat_appends_{0},structural_updates_{0},blocked_probes_{0},checkpoints_{0};
+  static uint validate_threads(uint n) {
+    if(!n)throw std::invalid_argument("ConCow requires nonzero pipes and workers");
+    return n;
+  }
+  static uint8_t validate_slots(uint8_t slots) {
+    if(slots!=0 && slots!=2 && slots!=4 && slots!=8)throw std::invalid_argument("invalid fat slots");
+    if constexpr(!requires(typename T::context* c){T::pipeline_fat_begin(c,true);})
+      if(slots)throw std::invalid_argument("tree has no native fat adapter");
+    return slots;
+  }
+  static_assert(std::atomic_uint64_t::is_always_lock_free);
 
   std::thread* const monitor_;
 
@@ -40,7 +56,8 @@ private:
 
   alignas(128) mpsc_list<worker_context> workers_available_;
 
-  alignas(128) std::atomic<typename T::nodeptr> root_;
+  alignas(128) epoch_reclaimer<T,true> gc_;
+  alignas(128) std::atomic_uint64_t gc_requested_{0},gc_completed_{0};
 
   alignas(128) std::atomic_uint64_t n_submitted_;
   alignas(128) std::atomic_uint64_t n_committed_;
@@ -83,16 +100,29 @@ private:
       pipes_[0].wait(&n_tasks, tid);
       auto ctx = &ctxs_[tid%BUFFER_SIZE];
       if (tid % BUFFER_SIZE == 0) [[unlikely]] {
+        ctx->checkpoint_rebuilt = 0;
+        ctx->gc_enabled = gc_.enabled();
         if (last_checkpoint < checkpoint_.load(std::memory_order_acquire)) {
           last_checkpoint = tid;
           ctx->t_past = ctxs_[(tid-1)%BUFFER_SIZE].root;
           wait_version(ctx);
-          T::checkpoint_handler(ctx); }
+          T::checkpoint_handler(ctx);
+          ctx->checkpoint_rebuilt = 1;
+          last_structural_=tid;
+          checkpoints_.fetch_add(1,std::memory_order_relaxed); }
         else { ctx->root = ctxs_[(tid-1)%BUFFER_SIZE].root; } }
       else {
         if (ctx->op == T::operand::INIT) [[likely]] {
           ctx->t_past = ctxs_[(tid-1)%BUFFER_SIZE].root;
-          ctx->op = T::handlers[0](ctx);
+          if constexpr(requires { T::pipeline_fat_begin(ctx,true); }) {
+            if(fat_slots_) {
+              const bool ready=n_committed_.load(std::memory_order_acquire)>=last_structural_;
+              if(!ready)blocked_probes_.fetch_add(1,std::memory_order_relaxed);
+              ctx->op=T::pipeline_fat_begin(ctx,ready);
+              if(ctx->root==ctx->t_past)fat_appends_.fetch_add(1,std::memory_order_relaxed);
+              else {last_structural_=tid;structural_updates_.fetch_add(1,std::memory_order_relaxed);}
+            } else ctx->op=T::handlers[0](ctx);
+          } else ctx->op=T::handlers[0](ctx);
           while (ctx->retry) [[unlikely]] { iter_exec(ctx); } }
         else /* just a bubble */ { /* assert(ctx->op == DONE); */ } }
       pipes_[1].advance(tid); }
@@ -143,6 +173,7 @@ private:
   inline void worker_exec(T::context* ctx, uint64_t stage) {
     if (ctx->wait_subtree) { wait_version(ctx); }
     else { wait_stage(ctx, stage+ctx->wait_child); }
+    if constexpr(requires { T::before_worker_step(ctx); })T::before_worker_step(ctx);
     ctx->op = T::handlers[ctx->op](ctx);
   }
 
@@ -175,8 +206,10 @@ private:
     uint64_t n_submitted_local = 0;
     uint64_t n_inited_local = 0;
     uint64_t n_committed_local = 0;
+    uint64_t last_reclaimed_frontier=0;
 
     while (!stop || n_committed_local < n_submitted_local) {
+      if constexpr(requires { T::on_monitor_pass(); })T::on_monitor_pass();
       stop = stop_.load(std::memory_order_acquire);
       n_submitted_local = n_submitted_.load(std::memory_order_acquire);
 
@@ -193,14 +226,25 @@ private:
       uint64_t n_committed_next = n_committed_local;
       while (n_committed_next < n_inited_local) {
           if (~stages_[(n_committed_next+1)%BUFFER_SIZE].load()) { break; }
-          /* to implement gc, append the root to stale list */
           ++n_committed_next;
+          gc_.retire(n_committed_next,
+                     &ctxs_[n_committed_next%BUFFER_SIZE]);
           if (ctxs_[n_committed_next%BUFFER_SIZE].new_checkpoint) {
             checkpoint_.store(n_committed_next, std::memory_order_release); } }
       if (n_committed_next > n_committed_local) {
         n_committed_local = n_committed_next;
-        root_.store(ctxs_[n_committed_local%BUFFER_SIZE].root, std::memory_order_release);
-        n_committed_.store(n_committed_local, std::memory_order_release); } }
+        gc_.publish(ctxs_[n_committed_local%BUFFER_SIZE].root,
+                    n_committed_local);
+        n_committed_.store(n_committed_local, std::memory_order_release);
+      }
+      // Acknowledge only requests acquired before the reader-slot scan.
+      const auto requested=gc_requested_.load(std::memory_order_acquire);
+      if(requested>gc_completed_.load(std::memory_order_relaxed) || n_committed_local>last_reclaimed_frontier) {
+        gc_.try_reclaim(n_committed_local);
+        last_reclaimed_frontier=n_committed_local;
+        gc_completed_.store(requested,std::memory_order_release);
+      }
+    }
 
     /* append bubbles to terminate the pipeline */
     uint64_t margin = BATCH_SIZE + (BATCH_SIZE - (n_inited_local%BATCH_SIZE)) % BATCH_SIZE;
@@ -208,14 +252,16 @@ private:
   }
 
 public:
-  concow(uint n_pipes, uint n_workers, T::nodeptr t_init) :
+  concow(uint n_pipes, uint n_workers, T::nodeptr t_init,
+         uint64_t n_readers = 1, bool gc_enabled = false, uint8_t fat_slots = 0) :
     start_(false), stop_(false),
-    n_pipes_(n_pipes), n_workers_(n_workers),
+    n_pipes_(validate_threads(n_pipes)), n_workers_(validate_threads(n_workers)),
+    fat_slots_(validate_slots(fat_slots)),
     monitor_(new std::thread),
     pipes_(new pipe_context[n_pipes+1]),
     workers_(new worker_context[n_workers]),
     workers_available_(),
-    root_(t_init),
+    gc_(t_init, n_readers, gc_enabled, fat_slots_!=0),
     n_submitted_(0), n_committed_(0), checkpoint_(0)
   {
     memset((void*)ctxs_, 0, sizeof(ctxs_));
@@ -253,6 +299,8 @@ public:
 
     std::atomic_thread_fence(std::memory_order_seq_cst);
 
+    gc_.try_reclaim(n_committed_.load(std::memory_order_acquire));
+
     delete monitor_;
     delete []pipes_;
     delete []workers_;
@@ -266,16 +314,24 @@ public:
     uint64_t tid;
 
     while (true) {
-      tid = 1+n_submitted_.fetch_add(1, std::memory_order_acquire);
+      auto prior=n_submitted_.load(std::memory_order_relaxed);
+      do {
+        if(prior==UINT32_MAX)throw std::overflow_error("ConCow version exhausted");
+      } while(!n_submitted_.compare_exchange_weak(prior,prior+1,std::memory_order_acq_rel));
+      tid=prior+1;
       // simply spin if the buffer is full
       while (tid >= n_committed_.load(std::memory_order_acquire) + BUFFER_SIZE);
       if (tid % BUFFER_SIZE != 0) [[likely]] { break; }
+      ctxs_[0].flags=0;
+      ctxs_[0].fat_slots=fat_slots_;
       ctxs_[0].sno = (uint32_t)tid;
       stages_[0].store(0); }
 
     uint64_t pos = tid % BUFFER_SIZE;
     ctxs_[pos].op = T::operand::INIT;
     ctxs_[pos].flags = 0;
+    ctxs_[pos].gc_enabled = gc_.enabled();
+    ctxs_[pos].fat_slots = fat_slots_;
     ctxs_[pos].sno = (uint32_t)tid;
     ctxs_[pos].key = key;
     ctxs_[pos].val = val;
@@ -285,10 +341,36 @@ public:
   }
 
   template <typename F>
+  auto query(uint64_t cid, F&& f) {
+    auto guard = gc_.pin(cid);
+    if constexpr (requires { f(guard.root(), guard.version()); }) {
+      return f(guard.root(), guard.version());
+    } else {
+      if(fat_slots_)throw std::invalid_argument("fat query requires snapshot version");
+      return f(guard.root());
+    }
+  }
+
+  template <typename F>
   auto query(F&& f) {
-    typename T::cnodeptr root = root_.load(std::memory_order_acquire);
-    /* to implement gc, use hazard ptr to access root */
-    return f(root);
+    return query(0, std::forward<F>(f));
+  }
+
+  void collect_garbage() {
+    if(!gc_.enabled())return;
+    const auto request=gc_requested_.fetch_add(1,std::memory_order_acq_rel)+1;
+    if constexpr(requires { T::on_gc_requested(request); })T::on_gc_requested(request);
+    while(gc_completed_.load(std::memory_order_acquire)<request)std::this_thread::yield();
+  }
+
+  struct fat_statistics { uint64_t appended,structural,blocked_probes,checkpoints; };
+  fat_statistics fat_execution_statistics() const {
+    return {fat_appends_.load(),structural_updates_.load(),blocked_probes_.load(),checkpoints_.load()};
+  }
+  uint64_t committed_version() const {return n_committed_.load(std::memory_order_acquire);}
+
+  typename epoch_reclaimer<T,true>::statistics gc_statistics() const {
+    return gc_.get_statistics();
   }
 };
 

@@ -1,0 +1,17 @@
+[REPORT] dataset: ycsbc/export/workload_memory_parallel_1pct.data
+[REPORT] scheduler: concow
+[REPORT] structure: aert
+[REPORT] num_clients: 32
+[REPORT] num_pipes: 3
+[REPORT] num_workers: 16
+[REPORT] gc: on
+[REPORT] num_records: 100000
+[REPORT] num_transactions: 1000
+[REPORT] init time (s): 0.39156425
+[REPORT] process time (s): 0.10147521
+[REPORT] gc retired nodes: 4862
+[REPORT] gc reclaimed nodes: 4862
+[REPORT] gc pending nodes: 0
+[REPORT] gc retired bytes: 824832
+[REPORT] gc reclaimed bytes: 824832
+[REPORT] gc pending bytes: 0

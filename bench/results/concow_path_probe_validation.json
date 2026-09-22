@@ -1,0 +1,43 @@
+{
+  "date": "2026-09-16",
+  "compiler": "Apple clang version 17.0.0 (clang-1700.6.4.2)\nTarget: arm64-apple-darwin25.6.0\nThread model: posix\nInstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin\n",
+  "optimized_tests": [
+    {
+      "command": "make -B test-fat-btree CC=clang++",
+      "result": "passed"
+    },
+    {
+      "command": "make test-concow-fat CC=clang++",
+      "result": "passed"
+    },
+    {
+      "command": "make test-concow-cyclic-fat CC=clang++",
+      "result": "passed",
+      "reference_combinations": 36,
+      "full_tree_split_combinations": 8,
+      "disjoint_pause_cases": 4,
+      "same_path_pause_case": true,
+      "two_structural_workers_overlap": true
+    },
+    {
+      "command": "make test-concow-progress CC=clang++",
+      "result": "characterization passed; admission stall reproduced with slots 0 and 2, not a lock-free acceptance pass"
+    }
+  ],
+  "ubsan": {
+    "build": "clang++ bench/concow_cyclic_fat_test.cpp -o /tmp/concow-cyclic-ubsan -Ibench/system_allocator -I. -std=c++20 -O1 -g -fsanitize=undefined -fno-sanitize-recover=all -DLIBCONCTRL_BUFFER_SIZE=1024 -pthread",
+    "run": "/tmp/concow-cyclic-ubsan",
+    "result": "passed with system allocator"
+  },
+  "asan_tsan": "not run this round; existing environment limitation remains unresolved",
+  "strict_lock_free": "not achieved",
+  "source_sha256": {
+    "lib/conctrl/concow_cyclic.hpp": "c029ebe6a6008b363f710348283bebc08da8fa0b96eb884b7419e847b8c53d04",
+    "lib/trees/btree/node.hpp": "3886b1e7e306a1e6c580def730802b668d7419e8eecceebece0f93c7cf6def7e",
+    "lib/trees/btree/handlers.hpp": "b9566b67987905b372a9d462f9b74e04a415e769ae1356955c5f43e4e630288f",
+    "lib/trees/btree/update_cow.hpp": "41df2315b4760e3aa4784c2ac427d7e98a0033ad38734f4264c01f187fb030d5",
+    "src/adapters/btree.hpp": "3f45f8f04a1142c04a8d55547e8a913759414c54507c3cd8e8a8f6624b825995",
+    "bench/concow_cyclic_fat_test.cpp": "6fd706dd6fc2ca0808447ae13fbd3212f6cc9a27e7f315946ad013da6a04720d",
+    "bench/concow_progress_test.cpp": "0ed3f88fce3435810de48809eceb19839c80155504b01aedf4bc8241257c0ab1"
+  }
+}

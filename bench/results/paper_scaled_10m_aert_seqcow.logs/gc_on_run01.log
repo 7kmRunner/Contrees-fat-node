@@ -1,0 +1,17 @@
+[REPORT] dataset: ycsbc/export/workload_gc_1pct_10m.data
+[REPORT] scheduler: seqcow
+[REPORT] structure: aert
+[REPORT] num_clients: 1
+[REPORT] num_pipes: 1
+[REPORT] num_workers: 1
+[REPORT] gc: on
+[REPORT] num_records: 10000000
+[REPORT] num_transactions: 100000
+[REPORT] init time (s): 11.42337000
+[REPORT] process time (s): 0.33820696
+[REPORT] gc retired nodes: 651140
+[REPORT] gc reclaimed nodes: 651140
+[REPORT] gc pending nodes: 0
+[REPORT] gc retired bytes: 117703168
+[REPORT] gc reclaimed bytes: 117703168
+[REPORT] gc pending bytes: 0

@@ -1,0 +1,68 @@
+--- a/lib/conctrl/common.hpp
++++ b/lib/conctrl/common.hpp
+@@ -18,16 +18,13 @@
+ template<typename T>
+ T load_consume(T const volatile* addr)
+ {
+-  T v = *const_cast<T const volatile*>(addr);
+-  std::atomic_signal_fence(std::memory_order_acq_rel);
+-  return v;
++  return __atomic_load_n(addr, __ATOMIC_ACQUIRE);
+ }
+ 
+ template<typename T>
+ void store_release(T volatile* addr, T v)
+ {
+-  std::atomic_signal_fence(std::memory_order_acq_rel);
+-  *const_cast<T volatile*>(addr) = v;
++  __atomic_store_n(addr, v, __ATOMIC_RELEASE);
+ }
+ 
+ }
+--- a/lib/conctrl/mpsc_list.hpp
++++ b/lib/conctrl/mpsc_list.hpp
+@@ -15,20 +15,20 @@
+   mpsc_list() : stub_(), head_(&stub_), tail_(&stub_) { }
+ 
+   void push(T* item) {
+-    item->next = nullptr;
++    __atomic_store_n(&item->next, (T*)nullptr, __ATOMIC_RELAXED);
+     T* prev = head_.exchange(item, std::memory_order_acq_rel);
+-    prev->next = item;
++    __atomic_store_n(&prev->next, item, __ATOMIC_RELEASE);
+   }
+ 
+   T* pop() {
+     T* tail = tail_;
+-    T* next = tail->next;
++    T* next = __atomic_load_n(&tail->next, __ATOMIC_ACQUIRE);
+ 
+     if (tail == &stub_) {
+       if (next == nullptr) { return nullptr; }
+       tail_ = next;
+       tail = next;
+-      next = next->next; }
++      next = __atomic_load_n(&next->next, __ATOMIC_ACQUIRE); }
+     if (next) {
+       tail_ = next;
+       return tail; }
+@@ -36,7 +36,7 @@
+     T* head = head_.load(std::memory_order_acquire);
+     if (tail != head) { return nullptr; }
+     push(&stub_);
+-    next = tail->next;
++    next = __atomic_load_n(&tail->next, __ATOMIC_ACQUIRE);
+     if (next) {
+       tail_ = next;
+       return tail; }
+--- a/lib/trees/btree/node.hpp
++++ b/lib/trees/btree/node.hpp
+@@ -62,7 +62,7 @@
+ 
+ static inline nodeptr copy_leaf(uint32_t ver, nodeptr t) {
+   nodeptr t_new = (nodeptr)aligned_alloc(128, sizeof(node));
+-  memcpy(t_new, t, 128);
++  memcpy(t_new, t, sizeof(node));
+   t_new->ver = ver;
+   return t_new;
+ }

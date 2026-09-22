@@ -1,0 +1,11 @@
+[REPORT] dataset: ycsbc/export/workload_memory_curve_1pct.data
+[REPORT] scheduler: concow
+[REPORT] structure: art
+[REPORT] num_clients: 32
+[REPORT] num_pipes: 3
+[REPORT] num_workers: 16
+[REPORT] gc: off
+[REPORT] num_records: 1000000
+[REPORT] num_transactions: 10000
+[REPORT] init time (s): 0.08034408
+[REPORT] process time (s): 0.04204004

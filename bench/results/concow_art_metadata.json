@@ -1,0 +1,14 @@
+{
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "compiler": "Apple clang version 17.0.0 (clang-1700.6.4.2)\nTarget: arm64-apple-darwin25.6.0\nThread model: posix\nInstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin\n",
+  "formal_rows": 144,
+  "sha256": {
+    "bench/concow_art_bench": "2912bcddef877f8bf3388e6fdf67a214c2fe385f86d9c65f959a7db9a402ad63",
+    "bench/concow_art_bench.cpp": "aead5eee82461fe74a79f180bceef58caff4bed9c6a57922b11e51445770d265",
+    "bench/concow_art_test.cpp": "ed8877f6ee821c6d2517d10ed2c57e8ba97b8e9dd247cc66f091a6c2fcca6f31",
+    "bench/concow_art_matrix.py": "dc6426c333075b97ab4ec3f9c5e15b6a191466675fb890345334d6c1269e307a",
+    "lib/trees/art/fat_merge.hpp": "b4446cc36dbf2c149f649bbf2ceb38a235df854af0b8f2015053bc9a2e81f5c7",
+    "src/adapters/art.hpp": "8df733e77b5d9f5709cee46ed748c98e8d6be247cba979352b46bb672791ac4f",
+    "lib/conctrl/concow_fat.hpp": "975429739c24ff08d6151cf8762f5a422654131c3d5d897d414cbe0d1a39667f"
+  }
+}

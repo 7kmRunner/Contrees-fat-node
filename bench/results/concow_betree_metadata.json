@@ -1,0 +1,17 @@
+{
+  "platform": "macOS 26.6.2 arm64",
+  "compiler": "Apple clang version 17.0.0 (clang-1700.6.4.2)",
+  "allocator": "mimalloc 3.5",
+  "formal_rows": 144,
+  "sha256": {
+    "bench/concow_betree_bench": "2580ec70a668abca461f97eef81e40c3446901582f853bb7ce050ac08cd4e296",
+    "bench/concow_betree_bench.cpp": "e2e22593a4079a797f3816aabe6cdc552da86564e7b663a491233a1b97229eca",
+    "bench/concow_betree_test.cpp": "313b0988d6340bca57d72c544e2ab6520fcdb968310e7fdec4c99446afc3f92d",
+    "bench/concow_betree_matrix.py": "82399f0cb40ff96ddea012e24ef8cebe9a647d8874c95774d2f11473a5bbdec7",
+    "lib/trees/betree/fat_merge.hpp": "2d2ca5fc44eae6f0459d47b5b2f4aeb2e3588d07af480a9c2241300048be4b60",
+    "src/adapters/betree.hpp": "86b80f67fe3df09df64628a75c73402353540440269a44cdeb498d9177306847",
+    "lib/conctrl/concow_fat.hpp": "4d3b711dbe1e10ebf506d5b41f28e9e6f31498f0c84b816ee3800d7371d12050",
+    "src/main.cpp": "a6a01b2f1d9f6c7297f83c7646fea5a27e902c0f17ee2ef7ed54109040189a60",
+    "src/config.hpp": "136fb5734c941d09d88323c50c46f6681ac86d577139b4764a76cf31c4ee2c69"
+  }
+}

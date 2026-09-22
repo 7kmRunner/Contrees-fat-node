@@ -1,0 +1,65 @@
+patching file 'lib/conctrl/common.hpp'
+patching file 'lib/conctrl/mpsc_list.hpp'
+patching file 'lib/trees/btree/node.hpp'
+patching file 'lib/trees/aert/node16.hpp'
+patching file 'lib/trees/art/node16.hpp'
+built btree baseline
+built btree latest
+built art baseline
+built art latest
+built aert baseline
+built aert latest
+built betree baseline
+built betree latest
+pilot btree baseline update: mismatches=0
+pilot btree baseline insert: mismatches=0
+pilot btree latest update: mismatches=0
+pilot btree latest insert: mismatches=0
+pilot finished btree
+pilot art baseline update: mismatches=0
+pilot art baseline insert: mismatches=0
+pilot art latest update: mismatches=0
+pilot art latest insert: mismatches=0
+pilot finished art
+pilot aert baseline update: mismatches=0
+pilot aert baseline insert: mismatches=1
+pilot aert latest update: mismatches=0
+pilot aert latest insert: mismatches=0
+pilot finished aert
+pilot betree baseline update: mismatches=0
+pilot betree baseline insert: mismatches=0
+pilot betree latest update: mismatches=0
+pilot betree latest insert: mismatches=0
+pilot finished betree
+run=0 tree=btree workload=update
+run=0 tree=btree workload=insert
+run=0 tree=art workload=update
+run=0 tree=art workload=insert
+run=0 tree=aert workload=update
+run=0 tree=aert workload=insert
+run=0 tree=betree workload=update
+run=0 tree=betree workload=insert
+run=1 tree=btree workload=update
+run=1 tree=btree workload=insert
+run=1 tree=art workload=update
+run=1 tree=art workload=insert
+run=1 tree=aert workload=update
+run=1 tree=aert workload=insert
+run=1 tree=betree workload=update
+run=1 tree=betree workload=insert
+run=2 tree=btree workload=update
+run=2 tree=btree workload=insert
+run=2 tree=art workload=update
+run=2 tree=art workload=insert
+run=2 tree=aert workload=update
+run=2 tree=aert workload=insert
+run=2 tree=betree workload=update
+run=2 tree=betree workload=insert
+run=3 tree=btree workload=update
+run=3 tree=btree workload=insert
+run=3 tree=art workload=update
+run=3 tree=art workload=insert
+run=3 tree=aert workload=update
+run=3 tree=aert workload=insert
+run=3 tree=betree workload=update
+run=3 tree=betree workload=insert

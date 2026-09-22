@@ -1,0 +1,48 @@
+{
+  "date": "2026-09-18",
+  "change": "linear merging of sorted B+Tree base and fat overlay; no scheduler or GC protocol changes",
+  "optimized": {
+    "controlled_cases": 8,
+    "cyclic_reference_cases": 72,
+    "full_tree_splits": 16,
+    "gc_cases": 16,
+    "seqcow": "passed",
+    "independent_fat": "passed"
+  },
+  "ubsan": {
+    "allocator": "system",
+    "controlled_cases": 8,
+    "cyclic_reference_cases": 72,
+    "full_tree_splits": 16,
+    "result": "passed"
+  },
+  "asan_tsan": "not run; existing validation gap",
+  "symbol_checks": {
+    "concow_worker_fat_test": {
+      "sha256": "2dee9e1a03593ae9b9d85d384a70be8a0e919ef77a34d5ad4113132747923548",
+      "mutex_condition_references": []
+    },
+    "concow_cyclic_fat_test": {
+      "sha256": "cd35863a027e351e5ca5452ae85d9e63ed3ed768468657989e389b4501efa738",
+      "mutex_condition_references": []
+    },
+    "concow_cyclic_gc_test": {
+      "sha256": "de69b35688e85a3520a980a7e1b41ac8c53f68e60dd57a0039c9b7a200b4c996",
+      "mutex_condition_references": []
+    }
+  },
+  "source_sha256": {
+    "lib/trees/btree/update_cow.hpp": "407210fb467331a0b43215264e4266c05c2285e52bb92edd69735c2c19cd8c9e",
+    "bench/btree_fat_linear_merge.patch": "68232be42a5c54e00feb52af7112824d7160fc7f2a1530168835c69dccdba3a4"
+  },
+  "log_sha256": {
+    "optimized": "986d8ffa2991eb31cedb5ed2b703b75922b014e15ffa7d8b7bcd69c33dfaadfa",
+    "ubsan": "417e253514e12f7ebbd8ede61f8cc6904c68ad29f4437c9ab3add4445c3fccfa"
+  },
+  "main_smoke": {
+    "entry": "passed",
+    "worker": "passed",
+    "gc_pending_nodes": 0,
+    "binary_sha256": "c6c7bba98a7c22c2fae0bca7bd73c8279825c3911a2f00446c9f1f1674076785"
+  }
+}

@@ -1,0 +1,11 @@
+sequence,mode,run,exit_code,elapsed_seconds,cpu_user_seconds,cpu_system_seconds,peak_rss_kib,num_records,num_transactions,estimated_input_kib,log_path,command
+1,gc_off,1,0,0.037639750,0.044044000,0.015145000,316288,,,,bench/results/betree_seqcow_gc_long_arm.logs/gc_off_run01.log,./bench/betree_gc_bench --scheduler seqcow --records 65536 --updates 200000
+2,gc_on,1,0,0.033555333,0.050014000,0.006740000,84768,,,,bench/results/betree_seqcow_gc_long_arm.logs/gc_on_run01.log,./bench/betree_gc_bench --scheduler seqcow --records 65536 --updates 200000 --gc
+3,gc_on,2,0,0.036217000,0.055015000,0.006324000,84768,,,,bench/results/betree_seqcow_gc_long_arm.logs/gc_on_run02.log,./bench/betree_gc_bench --scheduler seqcow --records 65536 --updates 200000 --gc
+4,gc_off,2,0,0.036267541,0.041908000,0.014785000,316288,,,,bench/results/betree_seqcow_gc_long_arm.logs/gc_off_run02.log,./bench/betree_gc_bench --scheduler seqcow --records 65536 --updates 200000
+5,gc_off,3,0,0.036028917,0.042907000,0.014137000,316288,,,,bench/results/betree_seqcow_gc_long_arm.logs/gc_off_run03.log,./bench/betree_gc_bench --scheduler seqcow --records 65536 --updates 200000
+6,gc_on,3,0,0.038131958,0.056372000,0.007257000,84768,,,,bench/results/betree_seqcow_gc_long_arm.logs/gc_on_run03.log,./bench/betree_gc_bench --scheduler seqcow --records 65536 --updates 200000 --gc
+7,gc_on,4,0,0.034662875,0.050567000,0.007401000,84768,,,,bench/results/betree_seqcow_gc_long_arm.logs/gc_on_run04.log,./bench/betree_gc_bench --scheduler seqcow --records 65536 --updates 200000 --gc
+8,gc_off,4,0,0.036639500,0.042718000,0.015170000,316288,,,,bench/results/betree_seqcow_gc_long_arm.logs/gc_off_run04.log,./bench/betree_gc_bench --scheduler seqcow --records 65536 --updates 200000
+9,gc_off,5,0,0.035877875,0.041141000,0.014272000,316288,,,,bench/results/betree_seqcow_gc_long_arm.logs/gc_off_run05.log,./bench/betree_gc_bench --scheduler seqcow --records 65536 --updates 200000
+10,gc_on,5,0,0.036832584,0.057815000,0.006206000,84768,,,,bench/results/betree_seqcow_gc_long_arm.logs/gc_on_run05.log,./bench/betree_gc_bench --scheduler seqcow --records 65536 --updates 200000 --gc

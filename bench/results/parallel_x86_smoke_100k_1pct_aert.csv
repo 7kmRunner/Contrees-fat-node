@@ -1,0 +1,3 @@
+sequence,mode,run,exit_code,elapsed_seconds,cpu_user_seconds,cpu_system_seconds,peak_rss_kib,num_records,num_transactions,estimated_input_kib,log_path,command
+1,gc_off,1,0,0.445697125,2.086564000,0.019921000,40300,100000,1000,2367.188,bench/results/parallel_x86_smoke_100k_1pct_aert.logs/gc_off_run01.log,/private/tmp/contrees-portable.Kddl9m/main-x86-systemmalloc ycsbc/export/workload_memory_parallel_1pct.data concow aert -c 32 -p 3 -w 16
+2,gc_on,1,0,0.576904875,2.515871000,0.021034000,38320,100000,1000,2367.188,bench/results/parallel_x86_smoke_100k_1pct_aert.logs/gc_on_run01.log,/private/tmp/contrees-portable.Kddl9m/main-x86-systemmalloc ycsbc/export/workload_memory_parallel_1pct.data concow aert -c 32 -p 3 -w 16 -g

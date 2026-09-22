@@ -1,0 +1,15 @@
+{
+  "date": "2026-09-10",
+  "compiler": "Apple clang version 17.0.0 (clang-1700.6.4.2)",
+  "sha256": {
+    "lib/conctrl/concow_fat.hpp": "26e94e56952180c6bdc048d0ad11f12e142e05db41f2fa64455dfebac8d31c67",
+    "bench/concow_fat_bench.cpp": "826ab463093b4688de61a4ff095566eb2b09d6a3201d8d5f9c4f710ca48b8e54",
+    "bench/concow_fat_profile.py": "09c8b2dcbd3033bf4b09aa596b7d769d5c0a4c1bc72305ecee2e1453a9a5f79c",
+    "bench/concow_fat_bench": "918bd49a082adbd0e4c27200473a80b2d1cd6fe9e93a249a65c2b08564801bd9",
+    "bench/concow_fat_profile": "36172de7c7cfdd5b582ab0f8bcd71b14d4622d922f04691d0d6c391f2fe72866",
+    "bench/results/concow_fat_profile_arm64.csv": "7908a2fc894963856b1efe709ba0a7cdb61826b45fecbdb332ffe5c38cf451aa",
+    "bench/results/concow_fat_materialization_threshold_arm64.csv": "dd8c3f33ada419f41bfe58be84e364e540157da42c02790fbe6c990227fb2823"
+  },
+  "profile_rows": 54,
+  "threshold_rows": 99
+}

@@ -1,0 +1,5 @@
+# Keep experiment reports and raw measurements in version control.
+!*.csv
+!*.json
+!*.md
+!*.log

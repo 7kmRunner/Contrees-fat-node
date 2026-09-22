@@ -20,7 +20,7 @@ static inline nodeptr leaf_update(uint64_t ver, nodeptr t_old, uint64_t val) {
 
 void print_leaf(const leaf* t) {
 #ifndef NDEBUG
-  fprintf(stderr, "LEAF %lx %lx\n", (uintptr_t)t, t->pfx);
+  fprintf(stderr, "LEAF %lx %llx\n", (uintptr_t)t, static_cast<unsigned long long>(t->pfx));
 #endif
 }
 

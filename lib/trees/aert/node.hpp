@@ -2,6 +2,7 @@
 
 #include <cstdint>
 #include <cstring>
+#include "lib/common/fat_value.hpp"
 
 #include "mimalloc.h"
 #include "mimalloc-new-delete.h"
@@ -32,7 +33,10 @@ struct alignas(64) leaf {
   uint32_t _;
   uint64_t pfx;
   uint64_t val;
+  contrees::fat_value fat;
 };
+
+static_assert(sizeof(leaf) == 64);
 
 struct alignas(64) node4 {
   uint64_t ver;
@@ -129,6 +133,7 @@ static inline uint8_t ptr_pfx_match(uint8_t ppfx, uint8_t ofs, uint64_t key) {
 }
 
 static inline uint8_t prefix_match(cnodeptr t, uint64_t key) {
+  if (t->pfx_len == 0) { return 0; }
   uint64_t d = (key^t->pfx) & prefix_mask(t->pfx_ofs, t->pfx_len);
   d = d << t->pfx_ofs;
   if (d == 0) { return t->pfx_len; }
@@ -189,12 +194,32 @@ static inline nodeptr node_copy(nodeptr t_old, uint64_t ver) {
     case NODEH16: msize = sizeof(nodeh16); cpsize = offsetof(nodeh16, chs); break;
     default /* LEAF */: msize = sizeof(leaf); cpsize = sizeof(leaf); }
   nodeptr t_new = (nodeptr)aligned_alloc(64, msize);
-  memcpy(t_new, t_old, cpsize);
+  if (t_old->type == LEAF) {
+    memcpy(t_new, t_old, offsetof(leaf, fat));
+    auto dst = (leaf*)t_new;
+    dst->val = ((leaf*)t_old)->fat.read(((leaf*)t_old)->val, ver);
+    dst->fat = {};
+  } else {
+    memcpy(t_new, t_old, cpsize);
+  }
   t_new->ver = ver;
   return t_new;
 }
 
-static inline void free_node(void* t) {
+static inline uint64_t node_size(cnodeptr tagged) {
+  cnodeptr t = extract_ptr(tagged);
+  switch (t->type) {
+    case NODE4:   return sizeof(node4);
+    case NODE16:  return sizeof(node16);
+    case NODEH4:  return sizeof(nodeh4);
+    case NODEH16: return sizeof(nodeh16);
+    default /* LEAF */: return sizeof(leaf) + ((const leaf*)t)->fat.allocated_bytes();
+  }
+}
+
+static inline void free_node(void* tagged) {
+  auto t = extract_ptr((nodeptr)tagged);
+  if (t->type == LEAF) ((leaf*)t)->fat.destroy();
   free(t);
 }
 

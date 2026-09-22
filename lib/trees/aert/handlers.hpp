@@ -5,10 +5,18 @@
 #include "node_wrapper.hpp"
 #include "context.hpp"
 #include "update_cow.hpp"
+#include "fat_lookup.hpp"
 
 namespace aert {
 
 operand handle_init(context* ctx) {
+  if (ctx->fat_slots) {
+    auto t = fat_leaf_for(ctx->t_past, ctx->key);
+    if (t && ((leaf*)t)->fat.append(ctx->fat_slots, ctx->sno, ctx->val)) {
+      ctx->root = ctx->t_past;
+      return operand::DONE;
+    }
+  }
   ctx->key_ofs = 0;
   operand op = update_cow(ctx, &ctx->root);
   ctx->t_cur = ctx->root;

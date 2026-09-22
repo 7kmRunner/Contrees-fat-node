@@ -1,0 +1,32 @@
+[
+  {
+    "compiler": "xcode",
+    "sanitizer": "address",
+    "compile_exit": 0,
+    "result": "timeout before main (8 seconds)"
+  },
+  {
+    "compiler": "xcode",
+    "sanitizer": "thread",
+    "compile_exit": 0,
+    "exit_code": -11,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "compiler": "llvm15",
+    "sanitizer": "address",
+    "compile_exit": 0,
+    "exit_code": -6,
+    "stdout": "",
+    "stderr": "AddressSanitizer: CHECK failed: sanitizer_malloc_mac.inc:191 \"((!asan_init_is_running)) != (0)\" (0x0, 0x0) (tid=590089)\n    <empty stack>\n\n"
+  },
+  {
+    "compiler": "llvm15",
+    "sanitizer": "thread",
+    "compile_exit": 0,
+    "exit_code": -11,
+    "stdout": "",
+    "stderr": ""
+  }
+]

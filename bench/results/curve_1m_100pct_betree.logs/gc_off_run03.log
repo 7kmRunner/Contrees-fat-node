@@ -1,0 +1,11 @@
+[REPORT] dataset: ycsbc/export/workload_memory_curve_100pct.data
+[REPORT] scheduler: seqcow
+[REPORT] structure: betree
+[REPORT] num_clients: 1
+[REPORT] num_pipes: 1
+[REPORT] num_workers: 1
+[REPORT] gc: off
+[REPORT] num_records: 1000000
+[REPORT] num_transactions: 1000000
+[REPORT] init time (s): 0.04892987
+[REPORT] process time (s): 0.45481946

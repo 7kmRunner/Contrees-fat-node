@@ -58,12 +58,14 @@ static inline operand update_cow(context* ctx, nodeptr* tp) {
   if (pmlen < t_past->pfx_len) {
     *tp = node_fork_cow(ctx, t_past, pmlen);
     *tp = embed_ptr(*tp, ppfx);
+    ctx->retire_replaced(t_past);
     return operand::FORK; }
 
   uint8_t key_len = node_key_len(t_past->type);
   if (t_past->type == LEAF) {
     *tp = leaf_update(ctx->sno, t_past, ctx->val);
     *tp = embed_ptr(*tp, ppfx);
+    ctx->retire_replaced(t_past);
     return operand::DONE; }
 
   ctx->key_ofs += t_past->pfx_len;
@@ -74,11 +76,13 @@ static inline operand update_cow(context* ctx, nodeptr* tp) {
     ctx->ch_idx = idx-1;
     *tp = node_copy(t_past, ctx->sno);
     *tp = embed_ptr(*tp, ppfx);
+    ctx->retire_replaced(t_past);
     return operand::SEARCH; }
 
   if (t_past->size == 16) {
     *tp = create_upper_half((node16*)t_past, ctx->sno, pkey);
     *tp = embed_ptr(*tp, ppfx);
+    ctx->retire_replaced(t_past);
     return operand::SPLIT; }
 
   if (is_full(t_past)) {
@@ -87,6 +91,7 @@ static inline operand update_cow(context* ctx, nodeptr* tp) {
     ctx->ch_idx = copy_append(tp, t_past, ctx->sno, pkey); }
 
   *tp = embed_ptr(*tp, ppfx);
+  ctx->retire_replaced(t_past);
   return operand::INSERT;
 }
 

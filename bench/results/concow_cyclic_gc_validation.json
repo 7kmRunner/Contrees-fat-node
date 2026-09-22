@@ -1,0 +1,51 @@
+{
+  "date": "2026-09-17",
+  "scope": "Native cyclic application-level writes/commit/GC use no mutex; original stage waits allowed; allocator/runtime internals not covered by the symbol check.",
+  "optimized_tests": {
+    "new_gc_ownership_cases": 8,
+    "cyclic_reference_cases": 36,
+    "cyclic_full_tree_split_cases": 8,
+    "controlled_pause_and_parallel_workers": "passed",
+    "seqcow_btree": "passed (forced rebuild)",
+    "independent_ordered_wave_btree": "passed",
+    "submission_stall_characterization": "inherited behavior retained; not a failure under the agreed scope"
+  },
+  "ubsan": {
+    "allocator": "system",
+    "flags": "-std=c++20 -O1 -g -fsanitize=undefined -fno-sanitize-recover=all -DLIBCONCTRL_BUFFER_SIZE=1024 -pthread -Ibench/system_allocator -I.",
+    "tests": [
+      "concow_cyclic_gc_test.cpp",
+      "concow_cyclic_fat_test.cpp"
+    ],
+    "result": "passed"
+  },
+  "asan_tsan": "not run; existing validation gap",
+  "symbol_checks": {
+    "bench/concow_cyclic_gc_test": {
+      "binary_sha256": "ed561af7529905047570040b1424aed4fe3237e13e3c28aa8e537ff9ab559c26",
+      "mutex_or_condition_symbols": []
+    },
+    "bench/concow_cyclic_fat_test": {
+      "binary_sha256": "bd7c10d3a434e443b1152affbe893646c3e84c13069f47f25f20a4cf66a0ba8b",
+      "mutex_or_condition_symbols": []
+    },
+    "bench/concow_fat_test": {
+      "binary_sha256": "2f1bd91ee38fae2c27ed206e86d760c8fb46ab0d08bd7f1d3394db6b6ed81a98",
+      "mutex_or_condition_symbols": [
+        "__ZNSt3__118condition_variable10notify_allEv",
+        "__ZNSt3__118condition_variable10notify_oneEv",
+        "__ZNSt3__118condition_variable4waitERNS_11unique_lockINS_5mutexEEE",
+        "__ZNSt3__118condition_variableD1Ev",
+        "__ZNSt3__15mutex4lockEv",
+        "__ZNSt3__15mutex6unlockEv",
+        "__ZNSt3__15mutexD1Ev"
+      ]
+    }
+  },
+  "source_sha256": {
+    "lib/conctrl/reclamation.hpp": "bd5d1cf3f1b761ace692dc15b076d2db5d13cbef4f7839df71a403d922a7291c",
+    "lib/conctrl/concow_cyclic.hpp": "cc17276c1e88cc7acf424d2a031f4b5e61adb2fd9d0ae3be4b744e0a761d6156",
+    "bench/concow_cyclic_gc_test.cpp": "75b73d15838bd00372ba9837850ebfe93ad66d390fcd706457698159bb26e307",
+    "bench/concow_cyclic_fat_test.cpp": "6fd706dd6fc2ca0808447ae13fbd3212f6cc9a27e7f315946ad013da6a04720d"
+  }
+}

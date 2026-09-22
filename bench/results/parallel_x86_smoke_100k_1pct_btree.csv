@@ -1,0 +1,3 @@
+sequence,mode,run,exit_code,elapsed_seconds,cpu_user_seconds,cpu_system_seconds,peak_rss_kib,num_records,num_transactions,estimated_input_kib,log_path,command
+1,gc_off,1,0,0.033434959,0.050820000,0.010075000,29772,100000,1000,2367.188,bench/results/parallel_x86_smoke_100k_1pct_btree.logs/gc_off_run01.log,/private/tmp/contrees-portable.Kddl9m/main-x86-systemmalloc ycsbc/export/workload_memory_parallel_1pct.data concow btree -c 32 -p 1 -w 8
+2,gc_on,1,0,0.032088291,0.067441000,0.009779000,28924,100000,1000,2367.188,bench/results/parallel_x86_smoke_100k_1pct_btree.logs/gc_on_run01.log,/private/tmp/contrees-portable.Kddl9m/main-x86-systemmalloc ycsbc/export/workload_memory_parallel_1pct.data concow btree -c 32 -p 1 -w 8 -g

@@ -15,20 +15,20 @@ public:
   mpsc_list() : stub_(), head_(&stub_), tail_(&stub_) { }
 
   void push(T* item) {
-    item->next = nullptr;
+    __atomic_store_n(&item->next, (T*)nullptr, __ATOMIC_RELAXED);
     T* prev = head_.exchange(item, std::memory_order_acq_rel);
-    prev->next = item;
+    __atomic_store_n(&prev->next, item, __ATOMIC_RELEASE);
   }
 
   T* pop() {
     T* tail = tail_;
-    T* next = tail->next;
+    T* next = __atomic_load_n(&tail->next, __ATOMIC_ACQUIRE);
 
     if (tail == &stub_) {
       if (next == nullptr) { return nullptr; }
       tail_ = next;
       tail = next;
-      next = next->next; }
+      next = __atomic_load_n(&next->next, __ATOMIC_ACQUIRE); }
     if (next) {
       tail_ = next;
       return tail; }
@@ -36,7 +36,7 @@ public:
     T* head = head_.load(std::memory_order_acquire);
     if (tail != head) { return nullptr; }
     push(&stub_);
-    next = tail->next;
+    next = __atomic_load_n(&tail->next, __ATOMIC_ACQUIRE);
     if (next) {
       tail_ = next;
       return tail; }

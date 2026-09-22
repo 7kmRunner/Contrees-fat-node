@@ -1,0 +1,17 @@
+[REPORT] dataset: ycsbc/export/workload_memory_curve_100pct.data
+[REPORT] scheduler: seqcow
+[REPORT] structure: btree
+[REPORT] num_clients: 1
+[REPORT] num_pipes: 1
+[REPORT] num_workers: 1
+[REPORT] gc: on
+[REPORT] num_records: 1000000
+[REPORT] num_transactions: 1000000
+[REPORT] init time (s): 0.04889721
+[REPORT] process time (s): 0.49061029
+[REPORT] gc retired nodes: 7000000
+[REPORT] gc reclaimed nodes: 7000000
+[REPORT] gc pending nodes: 0
+[REPORT] gc retired bytes: 1792000000
+[REPORT] gc reclaimed bytes: 1792000000
+[REPORT] gc pending bytes: 0

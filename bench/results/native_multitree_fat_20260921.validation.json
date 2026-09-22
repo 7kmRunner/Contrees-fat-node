@@ -1,0 +1,342 @@
+{
+  "date": "2026-09-21",
+  "scope": "Original fixed ConCow pipeline, conservative entry append, monitor-owned mutex-free application GC; worker append mode not implemented for these three trees",
+  "optimized_cases_per_tree": 24,
+  "ubsan_cases_per_tree": 24,
+  "capacity_slots": [
+    2,
+    4,
+    8
+  ],
+  "special_cases": "paused predecessor, paused collector, GC-off snapshot; BeTree full/partial checkpoint; ART/AERT empty root, growth and prefix fork",
+  "regressions": "SeqCow BeTree/radix and independent ordered-wave BeTree/ART/AERT passed",
+  "asan_tsan": "not run; not claimed passed",
+  "ticket_gap_wait_regression": "passed",
+  "cli": [
+    {
+      "tree": "betree",
+      "slots": 0,
+      "command": [
+        "./main",
+        "build/native-multitree-fat/cli.data",
+        "concow",
+        "betree",
+        "-p",
+        "3",
+        "-w",
+        "2",
+        "-c",
+        "4",
+        "--gc",
+        "--fat-slots",
+        "0"
+      ],
+      "output": "[REPORT] dataset: build/native-multitree-fat/cli.data\n[REPORT] scheduler: concow\n[REPORT] structure: betree\n[REPORT] num_clients: 4\n[REPORT] num_pipes: 3\n[REPORT] num_workers: 2\n[REPORT] fat_slots: 0\n[REPORT] fat_workers: off\n[REPORT] gc: on\n[REPORT] num_records: 1024\n[REPORT] num_transactions: 10000\n[REPORT] init time (s): 0.00281483\n[REPORT] process time (s): 0.00451250\n[REPORT] gc retired nodes: 40748\n[REPORT] gc reclaimed nodes: 40748\n[REPORT] gc pending nodes: 0\n[REPORT] gc retired bytes: 10431488\n[REPORT] gc reclaimed bytes: 10431488\n[REPORT] gc pending bytes: 0\n"
+    },
+    {
+      "tree": "betree",
+      "slots": 2,
+      "command": [
+        "./main",
+        "build/native-multitree-fat/cli.data",
+        "concow",
+        "betree",
+        "-p",
+        "3",
+        "-w",
+        "2",
+        "-c",
+        "4",
+        "--gc",
+        "--fat-slots",
+        "2"
+      ],
+      "output": "[REPORT] dataset: build/native-multitree-fat/cli.data\n[REPORT] scheduler: concow\n[REPORT] structure: betree\n[REPORT] num_clients: 4\n[REPORT] num_pipes: 3\n[REPORT] num_workers: 2\n[REPORT] fat_slots: 2\n[REPORT] fat_workers: off\n[REPORT] gc: on\n[REPORT] num_records: 1024\n[REPORT] num_transactions: 10000\n[REPORT] init time (s): 0.00221158\n[REPORT] process time (s): 0.00546158\n[REPORT] native fat appends: 2\n[REPORT] native structural updates: 9998\n[REPORT] native blocked probes: 9997\n[REPORT] native checkpoints: 0\n[REPORT] gc retired nodes: 40740\n[REPORT] gc reclaimed nodes: 40740\n[REPORT] gc pending nodes: 0\n[REPORT] gc retired bytes: 10429496\n[REPORT] gc reclaimed bytes: 10429496\n[REPORT] gc pending bytes: 0\n"
+    },
+    {
+      "tree": "betree",
+      "slots": 4,
+      "command": [
+        "./main",
+        "build/native-multitree-fat/cli.data",
+        "concow",
+        "betree",
+        "-p",
+        "3",
+        "-w",
+        "2",
+        "-c",
+        "4",
+        "--gc",
+        "--fat-slots",
+        "4"
+      ],
+      "output": "[REPORT] dataset: build/native-multitree-fat/cli.data\n[REPORT] scheduler: concow\n[REPORT] structure: betree\n[REPORT] num_clients: 4\n[REPORT] num_pipes: 3\n[REPORT] num_workers: 2\n[REPORT] fat_slots: 4\n[REPORT] fat_workers: off\n[REPORT] gc: on\n[REPORT] num_records: 1024\n[REPORT] num_transactions: 10000\n[REPORT] init time (s): 0.00197954\n[REPORT] process time (s): 0.00484204\n[REPORT] native fat appends: 4\n[REPORT] native structural updates: 9996\n[REPORT] native blocked probes: 9995\n[REPORT] native checkpoints: 0\n[REPORT] gc retired nodes: 40732\n[REPORT] gc reclaimed nodes: 40732\n[REPORT] gc pending nodes: 0\n[REPORT] gc retired bytes: 10427496\n[REPORT] gc reclaimed bytes: 10427496\n[REPORT] gc pending bytes: 0\n"
+    },
+    {
+      "tree": "betree",
+      "slots": 8,
+      "command": [
+        "./main",
+        "build/native-multitree-fat/cli.data",
+        "concow",
+        "betree",
+        "-p",
+        "3",
+        "-w",
+        "2",
+        "-c",
+        "4",
+        "--gc",
+        "--fat-slots",
+        "8"
+      ],
+      "output": "[REPORT] dataset: build/native-multitree-fat/cli.data\n[REPORT] scheduler: concow\n[REPORT] structure: betree\n[REPORT] num_clients: 4\n[REPORT] num_pipes: 3\n[REPORT] num_workers: 2\n[REPORT] fat_slots: 8\n[REPORT] fat_workers: off\n[REPORT] gc: on\n[REPORT] num_records: 1024\n[REPORT] num_transactions: 10000\n[REPORT] init time (s): 0.00164096\n[REPORT] process time (s): 0.00251442\n[REPORT] native fat appends: 1016\n[REPORT] native structural updates: 8984\n[REPORT] native blocked probes: 8983\n[REPORT] native checkpoints: 0\n[REPORT] gc retired nodes: 36683\n[REPORT] gc reclaimed nodes: 36683\n[REPORT] gc pending nodes: 0\n[REPORT] gc retired bytes: 9416448\n[REPORT] gc reclaimed bytes: 9416448\n[REPORT] gc pending bytes: 0\n"
+    },
+    {
+      "tree": "art",
+      "slots": 0,
+      "command": [
+        "./main",
+        "build/native-multitree-fat/cli.data",
+        "concow",
+        "art",
+        "-p",
+        "3",
+        "-w",
+        "2",
+        "-c",
+        "4",
+        "--gc",
+        "--fat-slots",
+        "0"
+      ],
+      "output": "[REPORT] dataset: build/native-multitree-fat/cli.data\n[REPORT] scheduler: concow\n[REPORT] structure: art\n[REPORT] num_clients: 4\n[REPORT] num_pipes: 3\n[REPORT] num_workers: 2\n[REPORT] fat_slots: 0\n[REPORT] fat_workers: off\n[REPORT] gc: on\n[REPORT] num_records: 1024\n[REPORT] num_transactions: 10000\n[REPORT] init time (s): 0.00178721\n[REPORT] process time (s): 0.00173900\n[REPORT] gc retired nodes: 29923\n[REPORT] gc reclaimed nodes: 29923\n[REPORT] gc pending nodes: 0\n[REPORT] gc retired bytes: 23476288\n[REPORT] gc reclaimed bytes: 23476288\n[REPORT] gc pending bytes: 0\n"
+    },
+    {
+      "tree": "art",
+      "slots": 2,
+      "command": [
+        "./main",
+        "build/native-multitree-fat/cli.data",
+        "concow",
+        "art",
+        "-p",
+        "3",
+        "-w",
+        "2",
+        "-c",
+        "4",
+        "--gc",
+        "--fat-slots",
+        "2"
+      ],
+      "output": "[REPORT] dataset: build/native-multitree-fat/cli.data\n[REPORT] scheduler: concow\n[REPORT] structure: art\n[REPORT] num_clients: 4\n[REPORT] num_pipes: 3\n[REPORT] num_workers: 2\n[REPORT] fat_slots: 2\n[REPORT] fat_workers: off\n[REPORT] gc: on\n[REPORT] num_records: 1024\n[REPORT] num_transactions: 10000\n[REPORT] init time (s): 0.00165358\n[REPORT] process time (s): 0.00183571\n[REPORT] native fat appends: 899\n[REPORT] native structural updates: 9101\n[REPORT] native blocked probes: 9100\n[REPORT] native checkpoints: 0\n[REPORT] gc retired nodes: 27226\n[REPORT] gc reclaimed nodes: 27226\n[REPORT] gc pending nodes: 0\n[REPORT] gc retired bytes: 21467776\n[REPORT] gc reclaimed bytes: 21467776\n[REPORT] gc pending bytes: 0\n"
+    },
+    {
+      "tree": "art",
+      "slots": 4,
+      "command": [
+        "./main",
+        "build/native-multitree-fat/cli.data",
+        "concow",
+        "art",
+        "-p",
+        "3",
+        "-w",
+        "2",
+        "-c",
+        "4",
+        "--gc",
+        "--fat-slots",
+        "4"
+      ],
+      "output": "[REPORT] dataset: build/native-multitree-fat/cli.data\n[REPORT] scheduler: concow\n[REPORT] structure: art\n[REPORT] num_clients: 4\n[REPORT] num_pipes: 3\n[REPORT] num_workers: 2\n[REPORT] fat_slots: 4\n[REPORT] fat_workers: off\n[REPORT] gc: on\n[REPORT] num_records: 1024\n[REPORT] num_transactions: 10000\n[REPORT] init time (s): 0.00179521\n[REPORT] process time (s): 0.00254667\n[REPORT] native fat appends: 945\n[REPORT] native structural updates: 9055\n[REPORT] native blocked probes: 9054\n[REPORT] native checkpoints: 0\n[REPORT] gc retired nodes: 27088\n[REPORT] gc reclaimed nodes: 27088\n[REPORT] gc pending nodes: 0\n[REPORT] gc retired bytes: 21358848\n[REPORT] gc reclaimed bytes: 21358848\n[REPORT] gc pending bytes: 0\n"
+    },
+    {
+      "tree": "art",
+      "slots": 8,
+      "command": [
+        "./main",
+        "build/native-multitree-fat/cli.data",
+        "concow",
+        "art",
+        "-p",
+        "3",
+        "-w",
+        "2",
+        "-c",
+        "4",
+        "--gc",
+        "--fat-slots",
+        "8"
+      ],
+      "output": "[REPORT] dataset: build/native-multitree-fat/cli.data\n[REPORT] scheduler: concow\n[REPORT] structure: art\n[REPORT] num_clients: 4\n[REPORT] num_pipes: 3\n[REPORT] num_workers: 2\n[REPORT] fat_slots: 8\n[REPORT] fat_workers: off\n[REPORT] gc: on\n[REPORT] num_records: 1024\n[REPORT] num_transactions: 10000\n[REPORT] init time (s): 0.00176304\n[REPORT] process time (s): 0.00203154\n[REPORT] native fat appends: 946\n[REPORT] native structural updates: 9054\n[REPORT] native blocked probes: 9053\n[REPORT] native checkpoints: 0\n[REPORT] gc retired nodes: 27085\n[REPORT] gc reclaimed nodes: 27085\n[REPORT] gc pending nodes: 0\n[REPORT] gc retired bytes: 21356480\n[REPORT] gc reclaimed bytes: 21356480\n[REPORT] gc pending bytes: 0\n"
+    },
+    {
+      "tree": "aert",
+      "slots": 0,
+      "command": [
+        "./main",
+        "build/native-multitree-fat/cli.data",
+        "concow",
+        "aert",
+        "-p",
+        "3",
+        "-w",
+        "2",
+        "-c",
+        "4",
+        "--gc",
+        "--fat-slots",
+        "0"
+      ],
+      "output": "[REPORT] dataset: build/native-multitree-fat/cli.data\n[REPORT] scheduler: concow\n[REPORT] structure: aert\n[REPORT] num_clients: 4\n[REPORT] num_pipes: 3\n[REPORT] num_workers: 2\n[REPORT] fat_slots: 0\n[REPORT] fat_workers: off\n[REPORT] gc: on\n[REPORT] num_records: 1024\n[REPORT] num_transactions: 10000\n[REPORT] init time (s): 0.00168654\n[REPORT] process time (s): 0.00205475\n[REPORT] gc retired nodes: 39899\n[REPORT] gc reclaimed nodes: 39899\n[REPORT] gc pending nodes: 0\n[REPORT] gc retired bytes: 6266688\n[REPORT] gc reclaimed bytes: 6266688\n[REPORT] gc pending bytes: 0\n"
+    },
+    {
+      "tree": "aert",
+      "slots": 2,
+      "command": [
+        "./main",
+        "build/native-multitree-fat/cli.data",
+        "concow",
+        "aert",
+        "-p",
+        "3",
+        "-w",
+        "2",
+        "-c",
+        "4",
+        "--gc",
+        "--fat-slots",
+        "2"
+      ],
+      "output": "[REPORT] dataset: build/native-multitree-fat/cli.data\n[REPORT] scheduler: concow\n[REPORT] structure: aert\n[REPORT] num_clients: 4\n[REPORT] num_pipes: 3\n[REPORT] num_workers: 2\n[REPORT] fat_slots: 2\n[REPORT] fat_workers: off\n[REPORT] gc: on\n[REPORT] num_records: 1024\n[REPORT] num_transactions: 10000\n[REPORT] init time (s): 0.00187783\n[REPORT] process time (s): 0.00217171\n[REPORT] native fat appends: 955\n[REPORT] native structural updates: 9045\n[REPORT] native blocked probes: 9044\n[REPORT] native checkpoints: 0\n[REPORT] gc retired nodes: 36080\n[REPORT] gc reclaimed nodes: 36080\n[REPORT] gc pending nodes: 0\n[REPORT] gc retired bytes: 5771904\n[REPORT] gc reclaimed bytes: 5771904\n[REPORT] gc pending bytes: 0\n"
+    },
+    {
+      "tree": "aert",
+      "slots": 4,
+      "command": [
+        "./main",
+        "build/native-multitree-fat/cli.data",
+        "concow",
+        "aert",
+        "-p",
+        "3",
+        "-w",
+        "2",
+        "-c",
+        "4",
+        "--gc",
+        "--fat-slots",
+        "4"
+      ],
+      "output": "[REPORT] dataset: build/native-multitree-fat/cli.data\n[REPORT] scheduler: concow\n[REPORT] structure: aert\n[REPORT] num_clients: 4\n[REPORT] num_pipes: 3\n[REPORT] num_workers: 2\n[REPORT] fat_slots: 4\n[REPORT] fat_workers: off\n[REPORT] gc: on\n[REPORT] num_records: 1024\n[REPORT] num_transactions: 10000\n[REPORT] init time (s): 0.00163217\n[REPORT] process time (s): 0.00259108\n[REPORT] native fat appends: 977\n[REPORT] native structural updates: 9023\n[REPORT] native blocked probes: 9022\n[REPORT] native checkpoints: 0\n[REPORT] gc retired nodes: 35992\n[REPORT] gc reclaimed nodes: 35992\n[REPORT] gc pending nodes: 0\n[REPORT] gc retired bytes: 5757440\n[REPORT] gc reclaimed bytes: 5757440\n[REPORT] gc pending bytes: 0\n"
+    },
+    {
+      "tree": "aert",
+      "slots": 8,
+      "command": [
+        "./main",
+        "build/native-multitree-fat/cli.data",
+        "concow",
+        "aert",
+        "-p",
+        "3",
+        "-w",
+        "2",
+        "-c",
+        "4",
+        "--gc",
+        "--fat-slots",
+        "8"
+      ],
+      "output": "[REPORT] dataset: build/native-multitree-fat/cli.data\n[REPORT] scheduler: concow\n[REPORT] structure: aert\n[REPORT] num_clients: 4\n[REPORT] num_pipes: 3\n[REPORT] num_workers: 2\n[REPORT] fat_slots: 8\n[REPORT] fat_workers: off\n[REPORT] gc: on\n[REPORT] num_records: 1024\n[REPORT] num_transactions: 10000\n[REPORT] init time (s): 0.00183121\n[REPORT] process time (s): 0.00214112\n[REPORT] native fat appends: 1001\n[REPORT] native structural updates: 8999\n[REPORT] native blocked probes: 8998\n[REPORT] native checkpoints: 0\n[REPORT] gc retired nodes: 35896\n[REPORT] gc reclaimed nodes: 35896\n[REPORT] gc pending nodes: 0\n[REPORT] gc retired bytes: 5742080\n[REPORT] gc reclaimed bytes: 5742080\n[REPORT] gc pending bytes: 0\n"
+    }
+  ],
+  "production_ring_cli": [
+    {
+      "tree": "betree",
+      "command": [
+        "./main",
+        "build/native-multitree-fat/cli-ring.data",
+        "concow",
+        "betree",
+        "-p",
+        "3",
+        "-w",
+        "2",
+        "-c",
+        "4",
+        "--gc",
+        "--fat-slots",
+        "4"
+      ],
+      "output": "[REPORT] dataset: build/native-multitree-fat/cli-ring.data\n[REPORT] scheduler: concow\n[REPORT] structure: betree\n[REPORT] num_clients: 4\n[REPORT] num_pipes: 3\n[REPORT] num_workers: 2\n[REPORT] fat_slots: 4\n[REPORT] fat_workers: off\n[REPORT] gc: on\n[REPORT] num_records: 1024\n[REPORT] num_transactions: 70000\n[REPORT] init time (s): 0.00263317\n[REPORT] process time (s): 0.02952429\n[REPORT] native fat appends: 4\n[REPORT] native structural updates: 69996\n[REPORT] native blocked probes: 69995\n[REPORT] native checkpoints: 0\n[REPORT] gc retired nodes: 285268\n[REPORT] gc reclaimed nodes: 285268\n[REPORT] gc pending nodes: 0\n[REPORT] gc retired bytes: 73028712\n[REPORT] gc reclaimed bytes: 73028712\n[REPORT] gc pending bytes: 0\n"
+    },
+    {
+      "tree": "art",
+      "command": [
+        "./main",
+        "build/native-multitree-fat/cli-ring.data",
+        "concow",
+        "art",
+        "-p",
+        "3",
+        "-w",
+        "2",
+        "-c",
+        "4",
+        "--gc",
+        "--fat-slots",
+        "4"
+      ],
+      "output": "[REPORT] dataset: build/native-multitree-fat/cli-ring.data\n[REPORT] scheduler: concow\n[REPORT] structure: art\n[REPORT] num_clients: 4\n[REPORT] num_pipes: 3\n[REPORT] num_workers: 2\n[REPORT] fat_slots: 4\n[REPORT] fat_workers: off\n[REPORT] gc: on\n[REPORT] num_records: 1024\n[REPORT] num_transactions: 70000\n[REPORT] init time (s): 0.00176404\n[REPORT] process time (s): 0.01344917\n[REPORT] native fat appends: 1024\n[REPORT] native structural updates: 68976\n[REPORT] native blocked probes: 68975\n[REPORT] native checkpoints: 0\n[REPORT] gc retired nodes: 206851\n[REPORT] gc reclaimed nodes: 206851\n[REPORT] gc pending nodes: 0\n[REPORT] gc retired bytes: 163251776\n[REPORT] gc reclaimed bytes: 163251776\n[REPORT] gc pending bytes: 0\n"
+    },
+    {
+      "tree": "aert",
+      "command": [
+        "./main",
+        "build/native-multitree-fat/cli-ring.data",
+        "concow",
+        "aert",
+        "-p",
+        "3",
+        "-w",
+        "2",
+        "-c",
+        "4",
+        "--gc",
+        "--fat-slots",
+        "4"
+      ],
+      "output": "[REPORT] dataset: build/native-multitree-fat/cli-ring.data\n[REPORT] scheduler: concow\n[REPORT] structure: aert\n[REPORT] num_clients: 4\n[REPORT] num_pipes: 3\n[REPORT] num_workers: 2\n[REPORT] fat_slots: 4\n[REPORT] fat_workers: off\n[REPORT] gc: on\n[REPORT] num_records: 1024\n[REPORT] num_transactions: 70000\n[REPORT] init time (s): 0.00169892\n[REPORT] process time (s): 0.01571583\n[REPORT] native fat appends: 888\n[REPORT] native structural updates: 69112\n[REPORT] native blocked probes: 69111\n[REPORT] native checkpoints: 0\n[REPORT] gc retired nodes: 276348\n[REPORT] gc reclaimed nodes: 276348\n[REPORT] gc pending nodes: 0\n[REPORT] gc retired bytes: 44214656\n[REPORT] gc reclaimed bytes: 44214656\n[REPORT] gc pending bytes: 0\n"
+    }
+  ],
+  "log_sha256": "50facd27031d397a117ccc98f8ae83c240bd49efeb7f479ea8695d0e63d1df1f",
+  "source_sha256": {
+    "lib/conctrl/concow.hpp": "ba842b3f3c0dc5bb34e280342375fe4977dcaae74fa9d50bf2fcbc58dd94acb8",
+    "lib/trees/betree/node.hpp": "846e2df7c46c388d8f8f774bd088bc24c515b153fbd1fcbd51b2922d250e81d6",
+    "src/config.hpp": "adc3ed21d896036dbacdb0a8062f92e35d040709a26ac68f386a8a15df3036a4",
+    "src/main.cpp": "87f48543e3140f9050d20b485b530a9f738d3f7fad914bb114a7eb7b7fc03a44",
+    "src/adapters/art.hpp": "15c8b400d7973b9d431ddfcbe7907ef77d2cf799642f24729f2544bc017fb5ba",
+    "src/adapters/aert.hpp": "4f7513b7d4c3f6bd6aa09a23cb2806f12194af7fa4831a6715377bf3df295910",
+    "src/adapters/betree.hpp": "5bcdecee76c3fe5ed2e07c520392384c3e5e6b284ec624c49b8b2e70bf554262",
+    "bench/concow_native_multitree_test.cpp": "1cbfebea02009c6db32906c0b0a9d2962d787ea22347f4c1fea8ce069aa1c303",
+    "bench/native_ticket_wait_test.cpp": "886e0dd4b50f5c2f3874ced7606d3920858042052a0ef7f9f78dde3d5495ec73"
+  },
+  "symbols": {
+    "bench/native_betree_fat_test": {
+      "sha256": "90b92d1d27598e9eef4f0b77a27fb4938c9aa08df7628d9d954540b81c3a3129",
+      "mutex_condition_references": []
+    },
+    "bench/native_art_fat_test": {
+      "sha256": "b86f067768c7f93d1a350a36609720b71886ce384af5c9187d3b53434bd9240c",
+      "mutex_condition_references": []
+    },
+    "bench/native_aert_fat_test": {
+      "sha256": "6ee74dc11b98381bfac74fe8e1b02c2676506521ea69fefdc345b0e28f9bca07",
+      "mutex_condition_references": []
+    }
+  }
+}

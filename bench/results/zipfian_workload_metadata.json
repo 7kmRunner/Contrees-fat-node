@@ -1,0 +1,22 @@
+[
+  {
+    "scale": "100k",
+    "records": 100000,
+    "operations": 500000,
+    "theta": 0.99,
+    "sha256": "cb3bee5997a6657a69de262e931174425a311878755d9fdbaccc8365a36bde46",
+    "observed_rank1_share": 0.07891,
+    "expected_rank1_share": 0.07825743810383633,
+    "top100_rank_share": 0.416138
+  },
+  {
+    "scale": "1m",
+    "records": 1000000,
+    "operations": 1000000,
+    "theta": 0.99,
+    "sha256": "1ee0c5835a54fa5a565382fdb4ad29486f32020e1c9691f9e5f7223184759212",
+    "observed_rank1_share": 0.065545,
+    "expected_rank1_share": 0.06496944918900666,
+    "top100_rank_share": 0.344844
+  }
+]

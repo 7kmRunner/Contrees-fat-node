@@ -1,0 +1,17 @@
+{
+  "summary_date": "2026-09-09",
+  "measured_rows": 576,
+  "platform": "macOS ARM64",
+  "allocator": "mimalloc",
+  "sha256": {
+    "bench/results/concow_fat_btree_materialization_arm64.csv": "41b2b497f70cfd2f5dc3578cf3471a167c68096152696bcbe885225a67f47336",
+    "bench/results/concow_fat_btree_materialization_100k_arm64.csv": "11de95ca4183be0f21f74c273815b4fb5581773cc02f59fc23db96951dd143ad",
+    "lib/conctrl/concow_fat.hpp": "a138d2cbc418d152d271c90304743dc76b893f1e2af76de897c1a9b10aafe93f",
+    "lib/trees/btree/fat_merge.hpp": "1ace6a528fab5d66b34a8166068237eac047891380436fb58077df160374cfff",
+    "src/adapters/btree.hpp": "e41a05fdab7dadc7bdfe3c879f18b65c11685255a70e42e480720554442ff04a",
+    "bench/concow_fat_test.cpp": "eba2754bcc2178a0de12810e52b130d78b619c2b32a7e210fddd2681e866c22a",
+    "bench/concow_fat_bench.cpp": "1765e9debab4b87073546e99717cd5a6de6793c8c9f11c8a4ab800fbf1a2e545",
+    "bench/concow_fat_matrix.py": "fac7f655dac5dd9e11f4cd049f5b04ae1f676f51fadffc6c6e1c7c47f2ef5832",
+    "bench/concow_fat_bench": "27f215e1bc8aa8518b9fc3793899f96ae64ad2d4cc955ee7d28b70edd29586f2"
+  }
+}

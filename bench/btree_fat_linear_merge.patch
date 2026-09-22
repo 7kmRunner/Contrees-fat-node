@@ -1,0 +1,120 @@
+--- a/lib/trees/btree/update_cow.hpp
++++ b/lib/trees/btree/update_cow.hpp
+@@ -21,16 +21,19 @@
+ // may do this even while earlier append or materialization workers are active.
+ static inline std::tuple<uint64_t,nodeptr,nodeptr>
+ prepare_leaf_cow(nodeptr t,context* ctx) {
+-  std::array<uint64_t,(2*B-1)+MAX_FAT_SLOTS+1> keys;
+-  unsigned count=0;
+-  for(unsigned i=0;i<t->size;++i)keys[count++]=t->keys[i];
++  // Base keys are already sorted; sort only the at-most-nine overlay keys.
++  std::array<uint64_t,MAX_FAT_SLOTS+1> overlay;
++  unsigned added=0;
+   if(auto block=leaf_delta(t))for(unsigned i=0;i<block->capacity;++i) {
+     const auto version=block->slots()[i].version.load(std::memory_order_acquire)&~DELTA_PENDING;
+-    if(version && version<=ctx->sno)keys[count++]=block->slots()[i].key;
+-  }
+-  keys[count++]=ctx->key;
+-  std::sort(keys.begin(),keys.begin()+count);
+-  count=std::unique(keys.begin(),keys.begin()+count)-keys.begin();
++    if(version && version<=ctx->sno)overlay[added++]=block->slots()[i].key;
++  }
++  overlay[added++]=ctx->key;
++  std::sort(overlay.begin(),overlay.begin()+added);
++  added=std::unique(overlay.begin(),overlay.begin()+added)-overlay.begin();
++  std::array<uint64_t,(2*B-1)+MAX_FAT_SLOTS+1> keys;
++  const unsigned count=std::set_union(t->keys,t->keys+t->size,
++      overlay.begin(),overlay.begin()+added,keys.begin())-keys.begin();
+   const unsigned left_size=count<=2*B-1 ? count : count/2;
+   auto left=new_leaf(ctx->sno,left_size);
+   std::copy_n(keys.begin(),left_size,left->keys);
+@@ -54,9 +57,13 @@
+   auto parent=ctx->t_cur;
+   nodeptr left=parent ? parent->chs[ctx->split_idx] : ctx->root;
+   nodeptr right=ctx->leaf_pair ? parent->chs[ctx->split_idx+1] : nullptr;
++  // Both destinations form one sorted sequence. Walk the source once rather
++  // than restarting a linear findval search for every destination key.
++  unsigned source_index=0;
+   for(auto dest:{left,right})if(dest)for(unsigned i=0;i<dest->size;++i) {
+-    const auto pos=findval(source,dest->keys[i]);
+-    dest->vals[i]=(pos<source->size && source->keys[pos]==dest->keys[i]) ? source->vals[pos] : 0;
++    while(source_index<source->size && source->keys[source_index]<dest->keys[i])++source_index;
++    dest->vals[i]=(source_index<source->size && source->keys[source_index]==dest->keys[i])
++        ? source->vals[source_index] : 0;
+   }
+   auto put=[&](uint64_t key,uint64_t value) {
+     auto dest=right && key>=right->keys[0] ? right : left;
+@@ -78,38 +85,43 @@
+   static constexpr uint8_t MAX_RECORDS =
+     (2*B-1) + MAX_FAT_SLOTS + 1;
+ 
++  std::array<leaf_record, MAX_FAT_SLOTS+1> overlay;
++  uint8_t added=0;
++  if (const delta_block* block=leaf_delta(t); block!=nullptr) {
++    for(uint8_t i=0;i<block->capacity;++i) {
++      const auto& slot=block->slots()[i];
++      const auto version=slot.version.load(std::memory_order_acquire);
++      if(version!=0 && version<=ctx->sno)overlay[added++]={slot.key,slot.value,version};
++    }
++  }
++  overlay[added++]={ctx->key,ctx->val,ctx->sno};
++  std::sort(overlay.begin(),overlay.begin()+added,
++    [](const leaf_record& lhs,const leaf_record& rhs) {
++      return lhs.key!=rhs.key ? lhs.key<rhs.key : lhs.version<rhs.version;
++    });
++  uint8_t distinct=0;
++  for(uint8_t begin=0;begin<added;) {
++    uint8_t end=begin+1;
++    while(end<added && overlay[end].key==overlay[begin].key)++end;
++    overlay[distinct++]=overlay[end-1];
++    begin=end;
++  }
++
++  // Merge the sorted base and newest-per-key overlay without re-sorting base.
+   std::array<leaf_record, MAX_RECORDS> records;
+-  uint8_t count = 0;
+-
+-  for (uint8_t i = 0; i < t->size; ++i) {
+-    records[count++] = { t->keys[i], t->vals[i], t->ver };
+-  }
+-
+-  if (const delta_block* block = leaf_delta(t); block != nullptr) {
+-    for (uint8_t i = 0; i < block->capacity; ++i) {
+-      const delta_slot& slot = block->slots()[i];
+-      const uint64_t slot_version =
+-        slot.version.load(std::memory_order_acquire);
+-      if (slot_version != 0 && slot_version <= ctx->sno) {
+-        records[count++] = { slot.key, slot.value, slot_version };
++  uint8_t base=0,delta=0,unique_count=0;
++  while(base<t->size || delta<distinct) {
++    if(delta==distinct || (base<t->size && t->keys[base]<overlay[delta].key)) {
++      records[unique_count++]={t->keys[base],t->vals[base],t->ver};
++      ++base;
++    } else {
++      auto value=overlay[delta++];
++      if(base<t->size && t->keys[base]==value.key) {
++        if(t->ver>value.version)value={t->keys[base],t->vals[base],t->ver};
++        ++base;
+       }
+-    }
+-  }
+-
+-  records[count++] = { ctx->key, ctx->val, ctx->sno };
+-  std::sort(records.begin(), records.begin()+count,
+-    [](const leaf_record& lhs, const leaf_record& rhs) {
+-      if (lhs.key != rhs.key) { return lhs.key < rhs.key; }
+-      return lhs.version < rhs.version;
+-    });
+-
+-  /* Entries for the same key are adjacent; retain their newest value. */
+-  uint8_t unique_count = 0;
+-  for (uint8_t begin = 0; begin < count; ) {
+-    uint8_t end = begin + 1;
+-    while (end < count && records[end].key == records[begin].key) { ++end; }
+-    records[unique_count++] = records[end-1];
+-    begin = end;
++      records[unique_count++]=value;
++    }
+   }
+ 
+   if (unique_count <= 2*B-1) {
