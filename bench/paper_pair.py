@@ -60,9 +60,10 @@ def report(out, rows, repeats):
     groups=defaultdict(list)
     for r in rows:groups[(r['tree'],r['workload'],r['p'],r['workers'])].append(r)
     table=[]
+    variants=('original','fat','worker') if any(r['variant']=='worker' for r in rows) else ('original','fat')
     for key, samples in sorted(groups.items()):
         row=dict(zip(('tree','workload','p','workers'),key))
-        for variant in ('original','fat'):
+        for variant in variants:
             batch=[r for r in samples if r['variant']==variant]
             good=[r for r in batch if r['status']=='ok' and 'process_seconds' in r]
             row[variant+'_valid']=f'{len(good)}/{repeats}'
@@ -71,21 +72,26 @@ def report(out, rows, repeats):
                 row[variant+'_mean_peak_mib']=statistics.mean(r['peak_rss_kib']/1024 for r in good)
                 row[variant+'_mops_stdev']=statistics.stdev(r['mops'] for r in good) if repeats>1 else 0
         safe=all(r.get('preflight_ok') and not r.get('timing_warning') for r in samples)
-        row['comparison_eligible']=safe and all(variant+'_mean_mops' in row for variant in ('original','fat'))
+        row['comparison_eligible']=safe and all(variant+'_mean_mops' in row for variant in variants)
         if row['comparison_eligible']:
             row['fat_speedup']=row['fat_mean_mops']/row['original_mean_mops']
+            if 'worker' in variants:
+                row['worker_speedup']=row['worker_mean_mops']/row['original_mean_mops']
+                row['worker_vs_entry']=row['worker_mean_mops']/row['fat_mean_mops']
         table.append(row)
     fields=['tree','workload','p','workers','original_valid','fat_valid','original_mean_mops',
             'fat_mean_mops','fat_speedup','original_mean_peak_mib','fat_mean_peak_mib',
             'original_mops_stdev','fat_mops_stdev','comparison_eligible']
+    if 'worker' in variants:
+        fields += ['worker_valid','worker_mean_mops','worker_mean_peak_mib','worker_mops_stdev','worker_speedup','worker_vs_entry']
     with (out/'summary.csv').open('w',newline='') as f:
         w=csv.DictWriter(f,fieldnames=fields);w.writeheader();w.writerows(table)
-    lines=['# Paper-workload two-version comparison','',
-           'Original CLI source is unchanged. Both variants disable GC; fat uses entry append.',
+    lines=['# Paper-workload comparison','',
+           'Original CLI source is unchanged. All variants disable GC; fat means entry append, worker means worker append.',
            'MOPS is the arithmetic mean of per-run throughput. Peak RSS includes loading/building and is NOT paper Fig. 13 tree-only memory.',
            'Small preflight verifies final values only, not full-scale concurrent query/scan results.',
            'Original BeTree operation-count waiting can end timing early at checkpoints; its speedup is always withheld. Other observed ticket gaps also suppress speedup.',
-           'This compares two concurrent implementations, not every baseline or figure in the paper. See metadata and docs/PAPER_PAIR.md.','',
+           'This compares selected concurrent implementations, not every baseline or figure in the paper. See metadata and docs/PAPER_PAIR.md.','',
            '| tree | workload | P | workers | original valid | fat valid | original MOPS | fat MOPS | fat/original | eligible |',
            '|---|---|---|---|---|---|---|---|---|---|']
     for r in table:
@@ -93,6 +99,11 @@ def report(out, rows, repeats):
         cells += [f'{r[k]:.4f}' if k in r else '—' for k in ('original_mean_mops','fat_mean_mops','fat_speedup')]
         cells += [str(r['comparison_eligible'])]
         lines.append('| '+' | '.join(cells)+' |')
+    if 'worker' in variants:
+        lines += ['', '| tree | worker valid | worker MOPS | worker/original | worker/entry | worker peak MiB |', '|---|---|---|---|---|---|']
+        for r in table:
+            cells=[r['tree'],r['worker_valid']]+[f'{r[k]:.4f}' if k in r else '—' for k in ('worker_mean_mops','worker_speedup','worker_vs_entry','worker_mean_peak_mib')]
+            lines.append('| '+' | '.join(cells)+' |')
     (out/'summary.md').write_text('\n'.join(lines)+'\n')
 
 
@@ -100,12 +111,15 @@ def main():
     ap=argparse.ArgumentParser(__doc__)
     ap.add_argument('--suite',choices=['insert','mixed','scaling'],default='insert')
     ap.add_argument('--trees',nargs='+',choices=list(BEST),default=list(BEST))
+    ap.add_argument('--include-worker',action='store_true',help='Compare original, entry and worker modes; requires --trees btree')
     ap.add_argument('--slots',type=int,choices=[2,4,8],default=8)
     ap.add_argument('--compiler',default='g++')
     ap.add_argument('--extra-flags',default='')
     ap.add_argument('--timeout',type=int,default=1800)
     ap.add_argument('--smoke',action='store_true',help='100k records/100k operations/1 run; NOT paper scale')
     a=ap.parse_args()
+    if a.include_worker and a.trees!=['btree']:ap.error('--include-worker requires --trees btree')
+    selected_variants=['original','fat','worker'] if a.include_worker else ['original','fat']
     if a.timeout<1:ap.error('timeout must be positive')
     if platform.system()!='Linux' or platform.machine() not in ('x86_64','AMD64'):
         ap.error('Run this experiment on the Linux x86-64 server.')
@@ -158,6 +172,8 @@ def main():
                 r=required(command,source,900,name+'-build.log');meta['builds'].append(r)
                 (checks if check else binaries)[variant]=str(out/'bin'/name)
                 meta.setdefault('binary_sha256',{})[name]=digest(out/'bin'/name);save()
+        if a.include_worker:
+            binaries['worker']=binaries['fat'];checks['worker']=checks['fat']
         # Generator and its templates come exclusively from the original commit.
         gen=out/'generator';shutil.copytree(original/'ycsbc',gen);(gen/'export').mkdir(exist_ok=True)
         sources=sorted(str(p) for p in gen.glob('*.cc'))+sorted(str(p) for p in (gen/'core').glob('*.cc'))+sorted(str(p) for p in (gen/'db').glob('*.cc'))
@@ -184,9 +200,10 @@ def main():
         for workload in workloads:
             data=generate(workload,100000,100000,'preflight_'+workload)
             for tree,p,w in configs:
-                for variant in ('original','fat'):
+                for variant in selected_variants:
                     command=[checks[variant],str(data),'concow',tree,'-c','32','-p',str(p),'-w',str(w)]
-                    if variant=='fat':command+=['--fat-slots',str(a.slots)]
+                    if variant!='original':command+=['--fat-slots',str(a.slots)]
+                    if variant=='worker':command+=['--fat-workers']
                     result=run(command,ROOT,a.timeout)
                     try: result['verification']=json.loads(result['stdout'])
                     except ValueError:result['verification']={}
@@ -201,20 +218,21 @@ def main():
             for repeat in range(1,repeats+1):
                 order=workloads.copy();rng.shuffle(order)
                 for workload in order:
-                    eligible=[c for c in configs if all(gate[(workload,*c,v)][0] for v in ('original','fat'))]
+                    eligible=[c for c in configs if all(gate[(workload,*c,v)][0] for v in selected_variants)]
                     if not eligible:
                         print('[SKIP] no correctness-passing pair: '+workload,flush=True);continue
                     print(f'[generate] run={repeat}/{repeats} {workload} n={n} ops={m}',flush=True)
                     data=generate(workload,n,m,f'run{repeat}_'+workload)
                     rng.shuffle(eligible)
                     for tree,p,w in eligible:
-                        variants=['original','fat'];rng.shuffle(variants)
+                        variants=selected_variants.copy();rng.shuffle(variants)
                         for variant in variants:
                             label=f'r{repeat}_{workload}_{tree}_p{p}_w{w}_{variant}'
                             rss=out/'logs'/(label+'.time')
                             command=['/usr/bin/time','-v','-o',str(rss),binaries[variant],str(data),'concow',tree,
                                      '-c','32','-p',str(p),'-w',str(w)]
-                            if variant=='fat':command+=['--fat-slots',str(a.slots)]
+                            if variant!='original':command+=['--fat-slots',str(a.slots)]
+                            if variant=='worker':command+=['--fat-workers']
                             r=run(command,ROOT,a.timeout)
                             (out/'logs'/(label+'.log')).write_text(r['stdout']+r['stderr'])
                             r.update(run=repeat,workload=workload,tree=tree,p=p,workers=w,variant=variant,
@@ -224,6 +242,14 @@ def main():
                             if r['status']=='ok':
                                 if len(times)!=1 or not peak or float(times[0])<=0:r['status']='invalid_output'
                                 else:r.update(process_seconds=float(times[0]),mops=m/float(times[0])/1e6,peak_rss_kib=int(peak[0]))
+                            if variant=='worker' and r['status']=='ok':
+                                counters=dict(re.findall(r'native ([a-z ]+):\s*(\d+)',r['stdout']))
+                                valid=('fat_workers: on' in r['stdout'] and
+                                       all(k in counters for k in ('fat appends','worker appends','structural updates','worker materializations')))
+                                if valid:
+                                    valid=(int(counters['fat appends'])==int(counters['worker appends']) and
+                                           int(counters['structural updates'])==int(counters['worker materializations']))
+                                if not valid:r['status']='invalid_worker_counters'
                             rows.append(r);f.write(json.dumps(r)+'\n');f.flush()
                             print(f'[run {repeat}/{repeats}] {tree} {workload} P={p} w={w} {variant}: {r["status"]}',flush=True)
                     data.unlink();report(out,rows,repeats)

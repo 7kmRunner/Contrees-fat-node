@@ -106,3 +106,18 @@ ART/AERT 当前 fat 槽只优化已有键更新，论文的纯插入负载可能
 导致误标 `invalid_output`。解析器现同时检查 stdout/stderr，已用这 8 条原始记录回放验证。
 无需重跑已有预检；这次只有一次小规模测量，不能当作论文规模结论。
 ART、AERT 和 BeTree 都观测到 100000 写入对应 last_ticket=100001，原版计时警告继续保留。
+
+## B+Tree 三组对照（2026-09-23）
+
+```bash
+python3 -u bench/paper_pair.py --suite insert --trees btree --include-worker
+```
+
+只增加实验模式，不改算法。默认仍为 1 亿记录、100 万插入、32 客户端、P=1（2 pipes）、
+8 workers、8 槽、GC 关闭、10 轮。每轮原版/入口追加/worker 追加共用数据、随机执行次序，
+总计 30 个正式性能进程；三组预检均通过才开始正式测量。
+`original` 是未修改的上游版本，`fat` 是入口追加，`worker` 是同一当前二进制加 `--fat-workers`。
+worker 模式预检将该选项传入实际控制器，运行日志检查 worker 追加/物化计数与总计数一致。
+summary.csv 新增 worker 吞吐、峰值 RSS、相对原版和相对入口追加的速度比。
+所有模式每次重新启动进程；原版插入生成器会得到相同数据哈希，这是固定负载上的独立进程重复，
+不称为十份不同随机数据。可先加 `--smoke --timeout 120` 做小规模检查，但正式命令自身也包含预检。

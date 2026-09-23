@@ -74,7 +74,7 @@ template<class T>int fixed(const config& c,std::vector<kv>& data,const std::vect
 template<unsigned P>int cyclic(const config& c,std::vector<kv>& data,const std::vector<operation>& ops){
  using T=btree::interface;auto root=T::build(c,data.size(),data.data());
 #ifdef PAPER_FAT
- auto scheduler=std::make_unique<conctrl::concow_cyclic<T,P>>(c.num_workers,root,c.num_clients,false,c.fat_slots);
+ auto scheduler=std::make_unique<conctrl::concow_cyclic<T,P>>(c.num_workers,root,c.num_clients,false,c.fat_slots,true,c.fat_workers);
 #else
  auto scheduler=std::make_unique<conctrl::concow_cyclic<T,P>>(c.num_workers,root);
 #endif
