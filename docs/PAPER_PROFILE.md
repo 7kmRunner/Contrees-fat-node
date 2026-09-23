@@ -56,3 +56,13 @@ CPU 自旋等待会占样本；睡眠/被调度出去的时间不会等同地反
 最终 `.tar.gz` 包含报告、原始采样和日志，不含 1 亿记录数据集或二进制。
 回传 `RESULT_ARCHIVE=` 文件。未运行成功时也会尽可能打包；不会把空采样标为成功。
 Mac 上只能验证包装器编译与 FIFO 开关协议；Linux perf 的完整运行需要在服务器确认。
+
+## perf 5.15 ACK 兼容修复
+
+服务器第一次采样在开启事件后因 `unexpected perf acknowledgement` 退出，没有有效诊断结果。
+perf 5.15 的 evlist__ctlfd_ack 使用 sizeof(ACK_TAG) 写出确认消息，含尾部 NUL；
+旧包装器严格比较 `ack\n`，因此拒绝正常回复。现过滤 NUL 并保留对非 ack 消息的拒绝。
+已测试普通回复、带 NUL、分片回复、延迟到下一次交换的 NUL，以及错误回复拒绝。
+脚本现在在编译树和生成 1 亿数据前先执行真实 perf 的 250ms 握手测试。
+内核符号权限警告不是本次退出原因；诊断只采用户态，不要求为此修改 kptr_restrict 或改用 root。
+参考实现：https://github.com/torvalds/linux/blob/v5.15/tools/perf/util/evlist.c

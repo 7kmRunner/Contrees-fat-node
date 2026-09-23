@@ -29,7 +29,9 @@ struct profile_timer {
       if(poll(&fd,1,10000)<=0)throw std::runtime_error("perf acknowledgement timed out");
       char buffer[32];auto n=read(ack,buffer,sizeof(buffer));
       if(n<=0)throw std::runtime_error("perf acknowledgement read failed");
-      response.append(buffer,static_cast<size_t>(n));
+      // perf 5.15 writes sizeof(ACK_TAG), including the trailing NUL.
+      // A FIFO read may split that NUL into the next command exchange.
+      for(ssize_t i=0;i<n;++i)if(buffer[i]!='\0')response.push_back(buffer[i]);
       if(response.size()>64)throw std::runtime_error("unexpected perf acknowledgement");
     }
     if(response!="ack\n")throw std::runtime_error("unexpected perf acknowledgement");

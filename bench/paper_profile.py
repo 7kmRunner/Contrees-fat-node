@@ -64,6 +64,23 @@ def main():
         compiler=previous['arguments']['compiler']
         import shlex
         extra=shlex.split(previous['arguments'].get('extra_flags',''))
+        # Exercise real perf's ACK framing before building/loading large trees.
+        probe=out/'gate_probe.cpp'
+        probe.write_text('#include "'+str(ROOT/'bench/profile_gate.hpp')+'"\n'
+                         'int main(){profile_timer t;t.start();t.count();t.start();'
+                         'auto end=std::chrono::steady_clock::now()+std::chrono::milliseconds(250);'
+                         'while(std::chrono::steady_clock::now()<end){}t.count();}\n')
+        execute([compiler,str(probe),'-I'+str(source/'original-source'),'-std=c++20','-O2',
+                 '-o',str(out/'bin/gate-probe')],ROOT,60,'build-gate-probe')
+        ctl=out/'probe.ctl';ack=out/'probe.ack';os.mkfifo(ctl);os.mkfifo(ack)
+        probe_result=execute(['perf','record','--delay=-1','--control=fifo:'+str(ctl)+','+str(ack),
+                             '-e','cpu-clock:u','-F',str(a.frequency),'-o',str(out/'profiles/gate-probe.data'),
+                             '--','env','CONTREES_PERF_CTL='+str(ctl),'CONTREES_PERF_ACK='+str(ack),
+                             str(out/'bin/gate-probe')],ROOT,30,'gate-probe')
+        if probe_result['stderr'].count('[PROFILE] enable\n')!=1 or probe_result['stderr'].count('[PROFILE] disable\n')!=1:
+            raise RuntimeError('perf phase-gate probe failed')
+        ctl.unlink();ack.unlink();meta['gate_probe_passed']=True;save()
+        print('[PASS] real perf phase-gate probe',flush=True)
         for variant in ('original','fat'):
             src=source/(variant+'-source')
             hashes=previous[variant+'-source_files_sha256']
