@@ -18,9 +18,11 @@ def main():
     ap.add_argument('--runs',type=int,default=3)
     ap.add_argument('--frequency',type=int,default=199)
     ap.add_argument('--smoke',action='store_true',help='100k/100k, diagnostic only')
+    ap.add_argument('--source-lines',action='store_true',help='Optional, potentially slow source-line report')
+    ap.add_argument('--report-timeout',type=int,default=180)
     ap.add_argument('--timeout',type=int,default=1800)
     a=ap.parse_args()
-    if min(a.runs,a.frequency,a.timeout)<1:ap.error('counts must be positive')
+    if min(a.runs,a.frequency,a.timeout,a.report_timeout)<1:ap.error('counts must be positive')
     if platform.system()!='Linux' or platform.machine()!='x86_64':ap.error('Linux x86-64 required')
     os.chdir(ROOT)
     if a.source_run:
@@ -129,14 +131,24 @@ def main():
                 meta['measurements'].append(dict(run=repeat,variant=variant,**r));save()
                 ctl.unlink();ack.unlink()
                 perfdata=str(out/'profiles'/(label+'.data'))
-                for suffix,options in [('self',['--no-children','--sort','symbol,dso']),
-                                       ('callers',['--children','--sort','symbol']),
-                                       ('lines',['--no-children','--sort','symbol,srcline'])]:
-                    result=execute(['perf','report','--stdio','--stdio-color','never','--percent-limit','0.5','-i',perfdata,*options],ROOT,180,label+'-'+suffix)
+                reports=[('self',['--no-children','--sort','symbol,dso']),
+                         ('callers',['--children','--sort','symbol'])]
+                if a.source_lines:reports.append(('lines',['--no-children','--sort','symbol,srcline']))
+                for suffix,options in reports:
+                    result=execute(['perf','report','--stdio','--stdio-color','never','--percent-limit','0.5','-i',perfdata,*options],ROOT,a.report_timeout,label+'-'+suffix,False)
+                    meta.setdefault('reports',[]).append(dict(label=label,kind=suffix,status=result['status']))
                     (out/'profiles'/(label+'-'+suffix+'.txt')).write_text(result['stdout']+result['stderr'])
-                script=execute(['perf','script','-i',perfdata,'-F','comm,pid,tid,time,event,ip,sym,dso'],ROOT,180,label+'-stacks')
-                if not script['stdout'].strip():raise RuntimeError('No CPU samples captured: '+label)
+                    if result['status']!='ok':
+                        print(f'[WARN] {label}-{suffix}: {result["status"]}; raw samples retained, continuing',flush=True)
+                    save()
+                script=execute(['perf','script','-i',perfdata,'-F','comm,pid,tid,time,event,ip,sym,dso'],ROOT,a.report_timeout,label+'-stacks',False)
+                status=script['status'] if script['status']!='ok' or script['stdout'].strip() else 'empty_output'
+                meta.setdefault('reports',[]).append(dict(label=label,kind='stacks',status=status))
+                if status!='ok':print(f'[WARN] {label}-stacks: {status}; raw samples retained, continuing',flush=True)
                 (out/'profiles'/(label+'-stacks.txt')).write_text(script['stdout'])
+                save()
+        meta['report_failures']=sum(r['status']!='ok' for r in meta.get('reports',[]))
+        print(f'REPORT_FAILURES={meta["report_failures"]}',flush=True)
         meta['completed']=True
         print('COMPLETE: diagnostic profiles only; do not use these timings as uninstrumented throughput.',flush=True)
         return 0

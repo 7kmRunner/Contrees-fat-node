@@ -66,3 +66,13 @@ perf 5.15 的 evlist__ctlfd_ack 使用 sizeof(ACK_TAG) 写出确认消息，含�
 脚本现在在编译树和生成 1 亿数据前先执行真实 perf 的 250ms 握手测试。
 内核符号权限警告不是本次退出原因；诊断只采用户态，不要求为此修改 kptr_restrict 或改用 root。
 参考实现：https://github.com/torvalds/linux/blob/v5.15/tools/perf/util/evlist.c
+
+## 报告生成超时处理
+
+服务器第二次运行通过真实 perf 握手，首个 worker 样本及函数报告生成成功，
+但 `symbol,srcline` 报告超过原设定的 180 秒，旧脚本因此提前退出。
+源码行解析现改为 `--source-lines` 显式启用，默认只生成函数和调用栈报告。
+所有报告生成均为尽力处理：超时/失败/空栈会记录警告，保留原始 .data 并继续后续采样。
+`--report-timeout` 控制单个报告的上限。metadata.completed 表示采样流程完成，
+还需查看 report_failures 和 reports 各项状态，不能把它当成所有报告都有效。
+日志中的 r1-worker-lines timeout 是报告阶段超时，不是基准更新程序超时。
