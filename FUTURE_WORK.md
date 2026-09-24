@@ -123,3 +123,12 @@ BeTree 已保留 elastic boundary，并在批量合并后执行 reader-safe chec
 BeTree、ART、AERT 已支持原 `concow` 的入口 fat 追加、原阶段 COW、版本快照与
 monitor 独占 GC；BeTree 完整/局部 checkpoint 已验证。见 [实现范围](docs/NATIVE_MULTITREE_FAT.md)。
 后续仍需路径级准入、worker 追加协议及同架构内存/吞吐对照，不能直接套用 B+Tree 的实验结果。
+
+## 2026-09-24：新增实验内存参照与当前诊断
+
+用户确认：后续性能/内存实验应加入不进行路径复制的原始 inplace B+Tree，
+与原版 ConCow、fat 入口追加、fat worker 追加一起报告。使用相同数据和内存测量口径，
+区分进程峰值 RSS、建树后/更新后内存与树节点请求字节；不把不同进程峰值差直接当作纯历史版本开销。
+inplace 不保留旧版本，其串行执行方式应在报告中注明，不与并发控制器混称为相同功能。
+此项是后续实验要求，尚未加入运行脚本。
+当前先复用已完成的 perf 数据，定位客户端/worker 热点指令，不修改算法。
